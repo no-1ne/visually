@@ -73,7 +73,7 @@
 
     .f03-canvas-status {
       position: absolute;
-      right: 18px;
+      left: 18px;
       top: 18px;
       padding: 8px 14px;
       border-radius: 100px;
@@ -108,53 +108,41 @@
     }
 
     .f03-template-highlight {
-      left: 7px;
-      top: 47px;
-      width: 196px;
-      height: 39px;
+      left: 158px;
+      top: 610px;
+      width: 326px;
+      height: 35px;
     }
 
     .f03-copy-highlight {
-      left: 470px;
-      top: 206px;
-      width: 330px;
-      height: 132px;
+      left: 444px;
+      top: 232px;
+      width: 386px;
+      height: 112px;
     }
 
-    .f03-target-ring {
+    .f03-audit-highlight {
       position: absolute;
-      left: 793px;
-      top: 124px;
-      width: 104px;
-      height: 104px;
-      border: 4px solid #7657ff;
-      border-radius: 50%;
-      outline: 2px solid rgba(118, 87, 255, 0.2);
-      outline-offset: 10px;
+      right: 18px;
+      top: 18px;
+      width: 184px;
+      height: 44px;
+      border: 3px solid #7657ff;
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.96);
       transform-origin: 50% 50%;
       will-change: transform, opacity;
     }
 
-    .f03-target-ring::before,
-    .f03-target-ring::after {
-      content: "";
-      position: absolute;
-      background: #7657ff;
-      border-radius: 4px;
-    }
-
-    .f03-target-ring::before {
-      left: -18px;
-      right: -18px;
-      top: 49px;
-      height: 4px;
-    }
-
-    .f03-target-ring::after {
-      top: -18px;
-      bottom: -18px;
-      left: 49px;
-      width: 4px;
+    .f03-audit-highlight span {
+      display: grid;
+      width: 100%;
+      height: 100%;
+      place-items: center;
+      color: #7657ff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
     }
 
     .f03-composer {
@@ -353,15 +341,16 @@
 
     .f03-receipt-fn {
       color: #0a0a0a;
-      font-size: 27px;
+      font-size: 20px;
       font-weight: 650;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
     }
 
     .f03-receipt-arg {
       margin-top: 6px;
       color: #4d35b5;
-      font-size: 20px;
+      font-size: 17px;
       font-weight: 500;
     }
 
@@ -470,15 +459,15 @@
     <div data-hf-id="hf-42uf" class="clip f03-ground" data-start="0" data-duration="18.5" data-track-index="0"></div>
 
     <div data-hf-id="hf-vuew" class="clip f03-content" data-start="0" data-duration="18.5" data-track-index="1">
-      <img data-hf-id="hf-0whk" class="f03-editor-bg" src="assets/visually-editor.png" alt="Visually editor">
+      <img data-hf-id="hf-0whk" class="f03-editor-bg" src="assets/visually-campaign-canvas.png" alt="Visually five-format campaign">
       <div data-hf-id="hf-xxtd" class="f03-bg-wash"></div>
 
       <div data-hf-id="hf-daaz" class="f03-editor-panel" id="03-ask-act-verify-editor-panel">
-        <img data-hf-id="hf-86aj" src="assets/visually-editor.png" alt="Editable Visually canvas">
+        <img data-hf-id="hf-86aj" src="assets/visually-campaign-canvas.png" alt="Real five-format campaign open in Visually">
         <div data-hf-id="hf-tmrb" class="f03-canvas-status">EDITABLE CANVAS</div>
-        <div data-hf-id="hf-ujfg" class="f03-media-highlight f03-template-highlight" id="03-ask-act-verify-template-highlight"><span data-hf-id="hf-8gef">TEMPLATE</span></div>
-        <div data-hf-id="hf-0oto" class="f03-media-highlight f03-copy-highlight" id="03-ask-act-verify-copy-highlight"><span data-hf-id="hf-vsdk">COPY</span></div>
-        <div data-hf-id="hf-q5wt" class="f03-target-ring" id="03-ask-act-verify-target-ring"></div>
+        <div data-hf-id="hf-ujfg" class="f03-media-highlight f03-template-highlight" id="03-ask-act-verify-template-highlight"><span data-hf-id="hf-8gef">5 FORMATS</span></div>
+        <div data-hf-id="hf-0oto" class="f03-media-highlight f03-copy-highlight" id="03-ask-act-verify-copy-highlight"><span data-hf-id="hf-vsdk">BRAND UPDATE</span></div>
+        <div data-hf-id="hf-q5wt" class="f03-audit-highlight" id="03-ask-act-verify-target-ring"><span data-hf-id="hf-2026">AUDIT · ALL PAGES</span></div>
       </div>
 
       <section data-hf-id="hf-46ej" class="f03-composer" id="03-ask-act-verify-composer">
@@ -498,8 +487,8 @@
 
       <aside data-hf-id="hf-ce60" class="f03-action-rail" id="03-ask-act-verify-action-rail">
         <div data-hf-id="hf-2he1" class="f03-rail-head">
-          <div data-hf-id="hf-s4u6" class="f03-rail-title"><span data-hf-id="hf-s44b" class="f03-live-dot"></span>WebMCP actions</div>
-          <div data-hf-id="hf-0uqz" class="f03-native-pill">TYPED</div>
+          <div data-hf-id="hf-s4u6" class="f03-rail-title"><span data-hf-id="hf-s44b" class="f03-live-dot"></span>Agent activity</div>
+          <div data-hf-id="hf-0uqz" class="f03-native-pill">REAL CALLS</div>
         </div>
 
         <div data-hf-id="hf-18dj" class="f03-receipt-stack" id="03-ask-act-verify-receipt-stack">
@@ -508,8 +497,8 @@
           <article data-hf-id="hf-madn" class="f03-receipt-row" id="03-ask-act-verify-receipt-1">
             <div data-hf-id="hf-2e7e" class="f03-receipt-index">01</div>
             <div data-hf-id="hf-yeow">
-              <div data-hf-id="hf-5n9k" class="f03-receipt-fn">apply_template</div>
-              <div data-hf-id="hf-7abn" class="f03-receipt-arg">Product Launch</div>
+              <div data-hf-id="hf-5n9k" class="f03-receipt-fn">visually_create_campaign</div>
+              <div data-hf-id="hf-7abn" class="f03-receipt-arg">5 coordinated formats</div>
             </div>
             <div data-hf-id="hf-l1wa" class="f03-check">
               <svg data-hf-id="hf-nldg" viewBox="0 0 26 26" aria-hidden="true"><path data-hf-id="hf-292w" class="f03-check-path" id="03-ask-act-verify-check-1" d="M4 13 L10 19 L22 6" /></svg>
@@ -519,8 +508,8 @@
           <article data-hf-id="hf-dmhs" class="f03-receipt-row" id="03-ask-act-verify-receipt-2">
             <div data-hf-id="hf-2sif" class="f03-receipt-index">02</div>
             <div data-hf-id="hf-y7yw">
-              <div data-hf-id="hf-bl3o" class="f03-receipt-fn">add_text</div>
-              <div data-hf-id="hf-3of0" class="f03-receipt-arg">CHASE THE SUN</div>
+              <div data-hf-id="hf-bl3o" class="f03-receipt-fn">visually_apply_brand_update</div>
+              <div data-hf-id="hf-3of0" class="f03-receipt-arg">5 pages · 30 elements</div>
             </div>
             <div data-hf-id="hf-dwji" class="f03-check">
               <svg data-hf-id="hf-7pxo" viewBox="0 0 26 26" aria-hidden="true"><path data-hf-id="hf-d4kj" class="f03-check-path" id="03-ask-act-verify-check-2" d="M4 13 L10 19 L22 6" /></svg>
@@ -530,8 +519,8 @@
           <article data-hf-id="hf-ee5l" class="f03-receipt-row" id="03-ask-act-verify-receipt-3">
             <div data-hf-id="hf-36tg" class="f03-receipt-index">03</div>
             <div data-hf-id="hf-x11t">
-              <div data-hf-id="hf-pboc" class="f03-receipt-fn">add_shape</div>
-              <div data-hf-id="hf-ol44" class="f03-receipt-arg">sun / circle</div>
+              <div data-hf-id="hf-pboc" class="f03-receipt-fn">visually_audit_design</div>
+              <div data-hf-id="hf-ol44" class="f03-receipt-arg">5 pages checked · read-only</div>
             </div>
             <div data-hf-id="hf-eauj" class="f03-check">
               <svg data-hf-id="hf-6j0l" viewBox="0 0 26 26" aria-hidden="true"><path data-hf-id="hf-6yuq" class="f03-check-path" id="03-ask-act-verify-check-3" d="M4 13 L10 19 L22 6" /></svg>
@@ -540,10 +529,10 @@
         </div>
 
         <div data-hf-id="hf-kg5d" class="f03-summary" id="03-ask-act-verify-summary">
-          <div data-hf-id="hf-2qp1" class="f03-summary-count">3</div>
-          <div data-hf-id="hf-cvur" class="f03-summary-title">actions applied</div>
-          <div data-hf-id="hf-s1zb" class="f03-summary-sub">Typed · inspectable · editable</div>
-          <div data-hf-id="hf-xokb" class="f03-proof-line">Every change — receipted<span data-hf-id="hf-rfre" class="f03-proof-underline" id="03-ask-act-verify-proof-underline"></span></div>
+          <div data-hf-id="hf-2qp1" class="f03-summary-count">5</div>
+          <div data-hf-id="hf-cvur" class="f03-summary-title">formats coordinated</div>
+          <div data-hf-id="hf-s1zb" class="f03-summary-sub">Brand-wide update · full audit</div>
+          <div data-hf-id="hf-xokb" class="f03-proof-line">Undoable · inspectable receipts<span data-hf-id="hf-rfre" class="f03-proof-underline" id="03-ask-act-verify-proof-underline"></span></div>
         </div>
       </aside>
 
@@ -599,7 +588,7 @@
         0.05,
       );
 
-      const prompt = "Create a bold launch graphic for a solar studio";
+      const prompt = "Turn one NOVA brief into five launch formats";
       const typeClock = { t: 0, p: 0 };
       tl.to(
         typeClock,

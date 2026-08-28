@@ -14,7 +14,7 @@ Most creative web apps still treat an AI agent like an outside observer: it can 
 
 Visually is a responsive, local-first image and media editor built around an editable Konva canvas. A person can start from 18 polished templates, work across square, portrait, landscape, print, and custom formats, and directly edit text, shapes, images, drawing, tables, layers, media, effects, animation, and page timing.
 
-The WebMCP layer registers 14 typed tools inside the page. An agent can inspect the open document, discover and apply templates, add or update text and shapes, select and arrange elements, manage pages, resize the design, use undo/redo, and exchange project JSON or SVG. Every tool returns a structured receipt. Destructive operations—deleting elements or pages and replacing the project—require an explicit `confirm: true` input and remain undoable.
+The WebMCP layer registers 17 typed tools inside the page. An agent can inspect the open document, turn one brand brief into five coordinated formats, propagate semantic copy and visual-token updates across every page, run a read-only production audit, and continue with precise element, page, history, and export operations. Every tool returns a structured receipt. Destructive operations—deleting elements or pages and replacing the project—require an explicit `confirm: true` input and remain undoable.
 
 The result is not “AI beside a design app.” It is one shared creative surface: the agent accelerates setup and repetitive changes; the human retains judgment, direct manipulation, and final control.
 
@@ -30,6 +30,7 @@ This creates a better UX than screen-coordinate automation:
 - Actions use stable element IDs and constrained schemas.
 - Mutations are visible, undoable, and saved in the same document model.
 - The human can continue editing immediately after an agent action.
+- The activity panel makes sanitized calls, receipts, and affected pages inspectable, with safe undo that refuses to overwrite a later human edit.
 - The app still works normally when WebMCP is unavailable.
 
 ### How we built it
@@ -46,14 +47,18 @@ Another challenge was proving safety without making the interaction tedious. We 
 
 ### Accomplishments that we're proud of
 
-- 14 typed, product-native WebMCP tools with structured results.
+- 17 typed, product-native WebMCP tools with structured results.
+- One brief becomes a coordinated Instagram post, story, YouTube thumbnail, poster, and landscape banner.
+- Semantic brand updates change tagged copy, color tokens, and typography across every format in one operation.
+- A read-only audit reports overflow, contrast, safe-area, missing-alt-text, and brand-consistency issues.
+- A judge-ready activity panel exposes real tool receipts and offers conflict-aware one-click undo.
 - Human and agent actions share one undoable Zustand document model.
 - A serious browser editor with 18 original templates and responsive desktop/mobile UI.
 - Client-side project, image, document, animation, and video export paths.
 - Guarded destructive actions, progressive registration, and an unsupported-browser fallback.
 - Extensive unit, component, integration, backend, and desktop/mobile end-to-end tests.
 
-The final local gate passed with 252 frontend tests, 15 Worker tests, 24 executed Chromium E2E scenarios across the desktop/mobile matrix (the inverse-project cases are intentionally skipped), and a production build. WebMCP source coverage is 100% for the registration bridge, with overall measured frontend line coverage at 96.96% and Worker line coverage at 97.14%.
+The complete release gate passes 260 frontend tests with 93.44% statement and 96.81% line coverage, 15 Worker tests with 95.34% statement and 97.14% line coverage, 26 applicable desktop/mobile Chromium tests, backend type-checking, lint, TypeScript, and the production build.
 
 ### What we learned
 
@@ -61,7 +66,7 @@ WebMCP is most powerful when it exposes domain intent, not a second DOM. “Appl
 
 ### What's next
 
-Next we want to add opt-in multi-user collaboration, richer typography flow, a discoverable third-party asset catalog with attribution, and reusable agent recipes that can build complete brand systems across multiple pages. We also want to publish the WebMCP tool contract as a small reference implementation for other canvas-based apps.
+Next we want to add opt-in multi-user collaboration, richer typography flow, a discoverable third-party asset catalog with attribution, and reusable agent recipes for more campaign structures and brand-governance policies. We also want to publish the WebMCP tool contract as a small reference implementation for other canvas-based apps.
 
 ## Built with
 
@@ -76,14 +81,13 @@ https://visually.deeeplearn.com
 1. Open the live URL in a WebMCP-capable browser or agent client.
 2. Wait for the editor to load; the initial project is stored locally and no account is required.
 3. Ask the client to call `visually_get_editor_state` and `visually_list_templates`.
-4. Apply a template with `visually_apply_template` using one returned template ID.
-5. Add a text element with `visually_add_text`, then inspect the returned element ID.
-6. Add a circle or rectangle with `visually_add_shape`.
-7. Use `visually_select_elements` and `visually_arrange_selection` to align, group, duplicate, or change layer order.
-8. Resize the active design with `visually_resize_page`; portrait, landscape, square, and custom sizes are supported.
-9. Use `visually_history` to undo and redo agent mutations.
-10. Call `visually_export_design` with `svg` or `json` to receive portable design data without forcing a download.
-11. To test a destructive flow, select an unlocked element and call `visually_delete_selection` first without confirmation; it should refuse. Only pass `confirm: true` after explicit approval, then undo the deletion.
+4. For the fastest complete story, use **Judge demo** in the top bar. It executes `visually_create_campaign`, `visually_apply_brand_update`, and `visually_audit_design`, then opens **Agent activity** with the structured receipts.
+5. For direct host testing, call `visually_create_campaign` with a brand name, headline, and `confirm: true` after approving project replacement.
+6. Call `visually_apply_brand_update` with a new headline, accent color, or font and verify every tagged format updates while remaining directly editable.
+7. Call `visually_audit_design` with `scope: "all_pages"`; it is read-only and returns categorized issues.
+8. Use `visually_history` to undo and redo agent mutations, or use the activity panel's conflict-aware **Undo agent changes** before making another edit.
+9. Call `visually_export_design` with `svg` or `json` to receive portable design data without forcing a download.
+10. To test another destructive flow, select an unlocked element and call `visually_delete_selection` first without confirmation; it should refuse. Only pass `confirm: true` after explicit approval, then undo the deletion.
 
 The visible UI remains fully operable throughout the tool sequence. On a browser without WebMCP, the editor continues normally and sets `data-webmcp="unsupported"` on the document root.
 
@@ -93,7 +97,7 @@ Public MIT-licensed repository: https://github.com/no-1ne/visually
 
 ## Video
 
-An 84-second, seven-scene narrated HyperFrames composition was validated, rendered, and published as an unlisted YouTube video at https://youtu.be/iZvxaMjk-vE. It uses original product capture, local voice synthesis, locally bundled sound effects, and no music.
+An 84-second, seven-scene narrated HyperFrames composition was validated, rendered at 1920×1080, and published at https://youtu.be/YSbrnkRDycM. The YouTube upload is **Unlisted and viewable by anyone with the link**. It uses original product capture, local voice synthesis, locally bundled sound effects, and no music.
 
 ## Gallery media
 

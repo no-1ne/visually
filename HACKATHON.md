@@ -10,6 +10,10 @@ This document maps Visually's WebMCP submission claims to source and tests. It i
 - Editor inspection, template discovery, and template application: `src/lib/webmcp/tools/query-tools.ts`
 - Text, shape, selection, update, arrangement, and guarded deletion: `src/lib/webmcp/tools/element-tools.ts`
 - Page management, resize, history, guarded import, and data export: `src/lib/webmcp/tools/document-tools.ts`
+- Multi-format campaign creation, semantic brand propagation, and design auditing: `src/lib/webmcp/tools/campaign-tools.ts`
+- Campaign document generation and metadata contract: `src/lib/campaign.ts`
+- Production-readiness audit engine: `src/lib/design-audit.ts`
+- Agent call receipts and judge workflow: `src/store/agent-activity-store.ts`, `src/components/agent-activity-panel.tsx`, and `src/features/judge-demo/`
 - Browser API types: `src/lib/webmcp/types.ts`
 
 ## Registered tools
@@ -30,6 +34,18 @@ This document maps Visually's WebMCP submission claims to source and tests. It i
 | `visually_history` | Undo or redo | Refuses unavailable operations |
 | `visually_export_design` | Return project JSON or active-page SVG | Read-only annotation |
 | `visually_import_project` | Validate and load project JSON | 5 MB cap, requires `confirm: true` |
+| `visually_create_campaign` | Create coordinated pages for up to five campaign formats from one brief | Requires `confirm: true`, one undo snapshot |
+| `visually_apply_brand_update` | Propagate tagged copy, colors, and typography across campaign pages | Semantic allowlist, one undo snapshot |
+| `visually_audit_design` | Report overflow, contrast, safe-area, alt-text, and brand consistency issues | Read-only annotation |
+
+## Fast judge path
+
+1. Select **Judge demo** in the top bar.
+2. Watch the shared document become five editable campaign formats.
+3. Open **Agent activity** to inspect the real tool names, sanitized inputs, structured receipts, and affected pages.
+4. Continue editing any page directly to demonstrate human control, or select **Undo agent changes** before making a human edit to restore the prior project.
+
+The undo control verifies both history depth and a document signature before acting. It disables itself after a later human edit so the demo cannot silently discard the person's work.
 
 ## Human-agent continuity
 
@@ -46,7 +62,9 @@ This is the core product thesis: WebMCP exposes semantic design operations witho
 ## Verification
 
 - Registration and progressive fallback: `src/lib/webmcp/install.test.ts`
-- Full tool behavior, confirmation gates, import/export, and history: `src/lib/webmcp/canvasly-tools.test.ts`
+- Core tool behavior, confirmation gates, import/export, and history: `src/lib/webmcp/canvasly-tools.test.ts`
+- Campaign creation, semantic propagation, audit categories, receipts, and safe undo: `src/lib/webmcp/campaign-tools.test.ts`
+- Real browser campaign, activity receipt, undo, and mobile-access workflow: `e2e/winning-workflow.spec.ts`
 - Shared state engine: `src/store/editor-store.test.ts`
 - Desktop and mobile browser flows: `e2e/`
 

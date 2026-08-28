@@ -1,7 +1,11 @@
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 import { createInitialDocument } from '@/templates';
+import { applyBrandUpdateToPages, createCampaignPages } from '@/lib/campaign';
+import { auditDesignPages } from '@/lib/design-audit';
 import { CURRENT_DOCUMENT_SCHEMA_VERSION } from '@/types';
+import type { BrandUpdate, BrandUpdateResult, CampaignBrief, CampaignFormat } from '@/lib/campaign';
+import type { DesignAuditReport } from '@/lib/design-audit';
 import type {
   AnimatableProperty, AnimationKeyframe, DesignDocument, EditorElement, ElementAnimation,
   MediaCrop, MediaEffects, PanelId,
@@ -40,6 +44,9 @@ export interface EditorStore {
   reorderPage: (fromIndex: number, toIndex: number) => void;
   applyTemplate: (document: DesignDocument) => void;
   loadProject: (pages: DesignDocument[]) => void;
+  createCampaign: (brief: CampaignBrief, formats?: CampaignFormat[]) => void;
+  applyBrandUpdate: (changes: BrandUpdate) => BrandUpdateResult;
+  auditDesign: (scope?: 'active_page' | 'all_pages') => DesignAuditReport;
   updatePage: (changes: Partial<DesignDocument>) => void;
   addElement: (element: EditorElement) => void;
   updateElement: (id: string, changes: Partial<EditorElement>, commit?: boolean) => void;
@@ -179,7 +186,7 @@ migrateLegacyStorage();
 
 export const useEditorStore = create<EditorStore>()(
   persist(
-    (set) => ({
+    (set, get) => ({
       pages: [migrateDesignDocument(createInitialDocument())],
       activePageIndex: 0,
       selectedIds: [],
@@ -248,6 +255,27 @@ export const useEditorStore = create<EditorStore>()(
         if (!pages.length) return state;
         return { ...record(state), pages: migratePages(pages), activePageIndex: 0, selectedIds: [], playhead: 0, isPlaying: false };
       }),
+
+      createCampaign: (brief, formats) => set((state) => ({
+        ...record(state), pages: createCampaignPages(brief, formats), activePageIndex: 0,
+        selectedIds: [], playhead: 0, isPlaying: false,
+      })),
+
+      applyBrandUpdate: (changes) => {
+        let result: BrandUpdateResult = { updatedElements: 0, updatedPages: 0, appliedFields: [] };
+        set((state) => {
+          const applied = applyBrandUpdateToPages(state.pages, changes);
+          result = applied.result;
+          if (!result.updatedPages) return state;
+          return { ...record(state), pages: applied.pages };
+        });
+        return result;
+      },
+
+      auditDesign: (scope = 'all_pages') => {
+        const state = get();
+        return auditDesignPages(state.pages, scope === 'active_page' ? [state.activePageIndex] : undefined);
+      },
 
       updatePage: (changes) => set((state) => {
         const pages = [...state.pages];

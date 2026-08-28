@@ -55,7 +55,8 @@ The downloaded Polotno package is kept under ignored `.reference/` storage for f
 - Undo/redo, clipboard shortcuts, selection shortcuts, nudge controls, zoom, fit-to-workspace
 - Local autosave and versioned JSON import/export
 - Client-only PNG, JPEG, WebP, SVG, PDF, printable HTML, PPTX, GIF, MP4, and WebM exports
-- WebMCP agent access through 14 typed browser tools with guarded destructive actions and legacy API fallback
+- WebMCP agent access through 17 typed browser tools, including multi-format campaign creation, semantic brand propagation, and design auditing
+- Judge-ready agent activity with sanitized inputs, structured receipts, affected pages, and safe one-click undo
 
 See [FEATURE_PARITY.md](./FEATURE_PARITY.md) for the precise implementation boundary and [CLIENT_SERVER_ARCHITECTURE.md](./CLIENT_SERVER_ARCHITECTURE.md) for the client/server and security decisions.
 
@@ -76,6 +77,14 @@ The current suite covers the Zustand state engine, history transactions, documen
 
 ## WebMCP
 
-On supporting browsers, Visually registers its tool catalog through `document.modelContext`. Unsupported browsers continue normally and expose `data-webmcp="unsupported"` on the root element; supporting hosts progress through `registering` to `ready` (or `error`). The bridge includes read tools for state/templates/export and mutation tools for templates, elements, selection, pages, resize, and history. Element/page deletion and whole-project import require an explicit `confirm: true` argument.
+On supporting browsers, Visually registers its tool catalog through `document.modelContext`. Unsupported browsers continue normally and expose `data-webmcp="unsupported"` on the root element; supporting hosts progress through `registering` to `ready` (or `error`). The bridge includes read tools for state, templates, export, and design auditing plus mutation tools for templates, elements, selection, pages, resizing, history, and campaign-wide brand work. Element/page deletion, project import, and replacing the project with a generated campaign require an explicit `confirm: true` argument.
 
-See [HACKATHON.md](./HACKATHON.md) for the full 14-tool map, safety model, source evidence, and WebMCP Challenge testing flow.
+The fastest evaluation path is the **Judge demo** control in the top bar. It runs the same registered tool implementations used by a WebMCP host: one brief becomes five editable formats, a semantic brand revision propagates across every page, and a read-only production audit returns structured issues. The adjacent **Agent activity** panel exposes each tool name, sanitized call input, result receipt, and affected pages. **Undo agent changes** restores the project only when no later human edit would be overwritten.
+
+The three campaign-native tools are:
+
+- `visually_create_campaign` — create any combination of Instagram post/story, YouTube thumbnail, poster, and landscape banner pages from one brand brief in one undoable transaction.
+- `visually_apply_brand_update` — update tagged copy, color tokens, and typography across all campaign pages without touching untagged layers.
+- `visually_audit_design` — inspect the active page or whole project for overflow, contrast, safe-area, missing-alt-text, and brand-consistency issues without mutating the document.
+
+See [HACKATHON.md](./HACKATHON.md) for the full 17-tool map, safety model, source evidence, and WebMCP Challenge testing flow.

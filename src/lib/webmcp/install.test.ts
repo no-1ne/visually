@@ -41,8 +41,8 @@ describe('Visually WebMCP installer', () => {
     const bridge = installVisuallyWebMcp();
     expect(bridge.supported).toBe(true);
     expect(document.documentElement.dataset.webmcp).toBe('registering');
-    expect(await bridge.ready).toBe(14);
-    expect(registerTool).toHaveBeenCalledTimes(14);
+    expect(await bridge.ready).toBe(17);
+    expect(registerTool).toHaveBeenCalledTimes(17);
     expect(registered.map((tool) => tool.name)).toContain('visually_get_editor_state');
     expect(document.documentElement.dataset.webmcp).toBe('ready');
     expect(signals.every((signal) => !signal.aborted)).toBe(true);
@@ -65,8 +65,8 @@ describe('Visually WebMCP installer', () => {
     const registerTool = vi.fn(() => Promise.resolve());
     Object.defineProperty(navigator, 'modelContext', { configurable: true, value: { registerTool } });
     const bridge = installVisuallyWebMcp();
-    expect(await bridge.ready).toBe(14);
-    expect(registerTool).toHaveBeenCalledTimes(14);
+    expect(await bridge.ready).toBe(17);
+    expect(registerTool).toHaveBeenCalledTimes(17);
     bridge.dispose();
   });
 });

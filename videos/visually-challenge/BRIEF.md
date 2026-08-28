@@ -16,8 +16,9 @@ narration: yes
 
 A judge-focused product promo and live demo for the WebMCP Challenge. Open with
 the friction of manually translating creative intent into dozens of UI actions,
-then show Visually letting an agent operate a complete, editable design studio
-through fourteen typed browser tools while the human stays in control. The tone
+then show Visually letting an agent turn one brief into five coordinated formats,
+apply a campaign-wide revision, audit every page, and continue editing through
+seventeen typed browser tools while the human stays in control. The tone
 is ambitious, crisp, and credible: value first, working proof immediately after.
 
 ## Assets
@@ -28,7 +29,8 @@ is ambitious, crisp, and credible: value first, working proof immediately after.
 ## Customizations
 
 - Feature real captured product screens rather than a fictional UI reconstruction.
-- Demonstrate a template application, agent-created text/shape edits, guarded deletion, and an SVG/JSON export through WebMCP.
+- Demonstrate the real campaign workflow: one approved brief creates five editable formats, one semantic update propagates brand changes across every page, and one read-only audit checks the full project through WebMCP.
+- Show the actual activity receipts and one-click undo contract, using the public tool names `visually_create_campaign`, `visually_apply_brand_update`, and `visually_audit_design`.
 - Close on local-first editing, responsive mobile UI, client-side media/export, and the public live URL.
 - Use English narration, readable burned-in captions, subtle sound design, and licensed or original music only.
 

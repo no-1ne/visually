@@ -125,6 +125,10 @@ button, input, textarea, select { font: inherit; }
 .canvas-page-wrap { position: relative; flex: none; overflow: hidden; border-radius: 2px; background: #fff; box-shadow: 0 18px 60px rgb(31 35 48 / .12); touch-action: none; }
 .canvas-page-wrap canvas { display: block; }
 .export-progress-card { position: fixed; z-index: 80; top: 58px; right: 14px; width: min(290px, calc(100vw - 28px)); padding: 12px; border: 1px solid #e4e4e9; border-radius: 14px; background: rgb(255 255 255 / .96); box-shadow: 0 16px 50px rgb(18 20 28 / .16); backdrop-filter: blur(16px); }
+.agent-activity-card { animation: agent-card-in .24s ease both; }
+.agent-activity-card:nth-child(2) { animation-delay: .06s; }
+.agent-activity-card:nth-child(3) { animation-delay: .12s; }
+@keyframes agent-card-in { from { opacity: 0; transform: translateY(7px); } to { opacity: 1; transform: translateY(0); } }
 .timeline-bar { position: relative; z-index: 35; border-top: 1px solid #e4e4e9; background: #fff; }
 .timeline-handle { position: absolute; right: 14px; bottom: 100%; display: flex; height: 28px; align-items: center; gap: 5px; padding: 0 10px; border: 1px solid #e4e4e9; border-bottom: 0; border-radius: 9px 9px 0 0; background: #fff; font-size: 10px; font-weight: 650; }
 .timeline-handle svg { width: 13px; }
@@ -262,6 +266,8 @@ kbd { padding: 4px 7px; border: 1px solid #e1e1e6; border-bottom-width: 2px; bor
 
 @media (max-width: 420px) {
   .design-name-input { width: 112px; }
+  .judge-demo-button { padding-inline: 8px; }
+  .agent-activity-sheet { inset: auto 6px 6px !important; width: calc(100vw - 12px) !important; height: min(82dvh, 720px) !important; border: 1px solid var(--border) !important; border-radius: 20px; }
   .editor-topbar [aria-label="Undo"], .editor-topbar [aria-label="Redo"], .editor-topbar [aria-label="Keyboard shortcuts"] { display: none; }
   .context-toolbar .toolbar-label { display: none; }
 }

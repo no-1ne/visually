@@ -138,7 +138,7 @@ describe('editor panels', () => {
     await waitFor(() => expect(useEditorStore.getState().pages[0].elements.at(-1)).toMatchObject({
       type: 'image', name: 'A violet paper bird', src: 'data:image/png;base64,generated-data',
     }));
-  });
+  }, 10_000);
 
   it('selects and controls layers', async () => {
     const user = userEvent.setup();

@@ -41,7 +41,7 @@ This checklist tracks high-level capabilities exposed by the public Polotno 4.10
 - [x] Versioned animation tracks, easing, keyframes, presets, playback, and page duration
 - [x] PDF, SVG, printable HTML, PPTX, JPEG, WebP, animated GIF, MP4, and WebM client exports
 - [x] Browser font upload/registration, px/in/mm units, DPI-aware raster ratios, bleed, safe area, and guides
-- [x] Progressive WebMCP integration with 14 typed tools for state, templates, elements, layout, pages, history, and client-side import/export
+- [x] Progressive WebMCP integration with 17 typed tools for state, templates, elements, layout, pages, history, campaign-wide brand workflows, design auditing, and client-side import/export
 - [x] Character-range rich-text formatting with lossless run splitting and edit-aware style preservation
 - [x] Curved arc text with bend/reverse controls, Konva rendering, and SVG path export
 - [x] Object-to-object edge/center snapping with nearest-target selection and zoom-aware thresholds

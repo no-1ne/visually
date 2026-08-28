@@ -23,9 +23,9 @@
 ## Line 3 — Ask, act, verify (Frame 3)
 
 **Time:** 18.0 – 36.0s
-**Delivery:** Pace the three typed actions distinctly, then slow for the receipt.
+**Delivery:** Pace the three campaign actions distinctly, then slow for the receipt.
 
-    Ask for a launch graphic. Web M C P turns that intent into typed actions: choose a template, add copy, place a shape — with a receipt for every change.
+    Give Visually one campaign brief. Web M C P creates five coordinated formats, applies a brand-wide revision, then audits every page — with an undoable receipt for each action.
 
 ## Line 4 — Human judgment stays in the loop (Frame 4)
 
@@ -46,7 +46,7 @@
 **Time:** 65.0 – 77.0s
 **Delivery:** Build momentum through the capability list; land “one focused studio.”
 
-    Start from eighteen polished templates. Work with text, shapes, media, tables, drawing, effects, animation, and fourteen typed Web M C P tools — all in one focused studio.
+    Start from eighteen polished templates. Work with text, shapes, media, tables, drawing, effects, animation, and seventeen typed Web M C P tools — all in one focused studio.
 
 ## Line 7 — Design together (Frame 7)
 

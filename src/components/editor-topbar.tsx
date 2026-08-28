@@ -13,6 +13,7 @@ import {
 } from '@/components/ui/dropdown-menu';
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Progress } from '@/components/ui/progress';
+import { AgentActivityControls } from '@/components/agent-activity-panel';
 import { useEditorStore } from '@/store/editor-store';
 import {
   browserRasterizer, encodePagesWithFfmpeg, importProject, pagesToPdf, pagesToPptxBlob,
@@ -93,6 +94,8 @@ export function EditorTopbar({ onExportPng }: EditorTopbarProps) {
       </div>
 
       <div className="flex shrink-0 items-center gap-1">
+        <AgentActivityControls />
+        <span className="mx-0.5 hidden h-5 w-px bg-border sm:block" />
         <Button variant="ghost" size="icon" disabled={!past.length} onClick={undo} aria-label="Undo"><Undo2Icon /></Button>
         <Button variant="ghost" size="icon" disabled={!future.length} onClick={redo} aria-label="Redo"><Redo2Icon /></Button>
         <Dialog>

@@ -25,7 +25,7 @@ describe('Visually WebMCP tools', () => {
   });
 
   it('publishes a unique, described, schema-backed tool catalog', () => {
-    expect(tools).toHaveLength(14);
+    expect(tools).toHaveLength(17);
     expect(new Set(tools.map((tool) => tool.name)).size).toBe(tools.length);
     for (const tool of tools) {
       expect(tool.name).toMatch(/^visually_[a-z_]+$/);

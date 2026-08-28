@@ -53,15 +53,31 @@ test.describe('desktop editor workflows', () => {
       const tools = (window as unknown as { __visuallyWebMcpTools: Map<string, unknown> }).__visuallyWebMcpTools;
       return [...tools.keys()];
     });
-    expect(catalog).toHaveLength(14);
+    expect(catalog).toHaveLength(17);
     expect(catalog).toContain('visually_add_text');
     expect(catalog).toContain('visually_export_design');
+    expect(catalog).toContain('visually_create_campaign');
+    expect(catalog).toContain('visually_apply_brand_update');
+    expect(catalog).toContain('visually_audit_design');
 
     const call = (name: string, input: Record<string, unknown>) => page.evaluate(async ({ toolName, args }) => {
       type BrowserTool = { execute: (value: Record<string, unknown>, options: { signal: AbortSignal }) => unknown | Promise<unknown> };
       const tools = (window as unknown as { __visuallyWebMcpTools: Map<string, BrowserTool> }).__visuallyWebMcpTools;
       return tools.get(toolName)?.execute(args, { signal: new AbortController().signal });
     }, { toolName: name, args: input });
+
+    const campaign = await call('visually_create_campaign', {
+      brandName: 'Host proof', headline: 'One brief. Every format.', confirm: true,
+    });
+    expect(campaign).toMatchObject({ ok: true, data: { pageCount: 5 } });
+    await expect(page.locator('.page-chip')).toHaveCount(5);
+    await expect(page.getByRole('heading', { name: 'Agent activity' })).toBeHidden();
+    const activityButton = page.getByRole('button', { name: 'Agent activity' });
+    await expect(activityButton.locator('span.bg-emerald-500')).toHaveCount(1);
+    await activityButton.click();
+    await expect(page.getByText('visually_create_campaign', { exact: true })).toBeVisible();
+    await expect(page.getByText(/Receipt: Created a coordinated 5-format campaign\./)).toBeVisible();
+    await page.getByRole('button', { name: 'Close' }).click();
 
     const applied = await call('visually_apply_template', { templateId: 'aurora-summit' });
     expect(applied).toMatchObject({ ok: true });

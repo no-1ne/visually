@@ -26,7 +26,7 @@
     {
       "id": "03",
       "path": "assets/voice/03.wav",
-      "duration_s": 9.109,
+      "duration_s": 10.731,
       "words": []
     },
     {
@@ -44,7 +44,7 @@
     {
       "id": "06",
       "path": "assets/voice/06.wav",
-      "duration_s": 10.411,
+      "duration_s": 10.517,
       "words": []
     },
     {
@@ -173,5 +173,5 @@
       "volume": 0.35
     }
   ],
-  "total_duration_s": 52.523
+  "total_duration_s": 54.251
 }

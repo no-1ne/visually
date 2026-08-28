@@ -72,8 +72,8 @@ Scene 4 (8.6–10.0s): “same editable canvas” seals inside a single violet p
 
 ## Frame 3 — Ask, act, verify
 
-- scene: A prompt types in, then a WebMCP action rail shows typed tools selecting a template, adding text, and inserting a shape before the editable canvas resolves.
-- voiceover: "Ask for a launch graphic. WebMCP turns that intent into typed actions: choose a template, add copy, place a shape — with a receipt for every change."
+- scene: One campaign brief types in, then the real WebMCP activity rail shows five coordinated formats, a brand-wide revision, and a read-only all-page audit before the editable campaign resolves.
+- voiceover: "Give Visually one campaign brief. WebMCP creates five coordinated formats, applies a brand-wide revision, then audits every page — with an undoable receipt for each action."
 - duration: 18s
 - poster: 14s
 - transition_in: push-slide LEFT
@@ -83,21 +83,21 @@ Scene 4 (8.6–10.0s): “same editable canvas” seals inside a single violet p
 - persuasion: Show-don't-tell proof
 - beat: intrigue + control
 - blueprint: compose
-- asset_candidates: assets/visually-editor.png — real editor surface used as the result of the WebMCP action sequence
-- focal: assets/visually-editor.png
-- roles: visually-editor = background
+- asset_candidates: assets/visually-campaign-canvas.png — real editor capture after the judge demo creates and updates all five campaign pages
+- focal: assets/visually-campaign-canvas.png
+- roles: visually-campaign-canvas = background
 - sfx: typing, click, pop
 
-narrativeRole: Demonstrate the core WebMCP loop from natural-language intent to structured, inspectable canvas mutations.
-keyMessage: WebMCP makes agent actions native, typed, and visible inside the product.
+narrativeRole: Demonstrate the real multi-page WebMCP loop from one brief to coordinated formats, semantic propagation, project-wide audit, and safe undo.
+keyMessage: WebMCP lets an agent operate on campaign meaning—not just isolated UI controls—while every action stays visible and reversible.
 
-Compose: use a prompt→machine theater→progressive receipt structure; the answer is an editable Visually canvas plus a structured WebMCP action log.
-Scene 1 (0.0–3.2s): the live editor sits dimmed at 42% behind a centered agent composer; “Create a bold launch graphic for a solar studio” types character-by-character with a visible caret (`discrete-text-sequence`, `context-sensitive-cursor`).
+Compose: use a prompt→machine theater→progressive receipt structure; the answer is a real five-page Visually campaign plus its structured WebMCP activity log.
+Scene 1 (0.0–3.2s): the live campaign editor sits dimmed behind a centered agent composer; “Turn one NOVA brief into five launch formats” types character-by-character with a visible caret (`discrete-text-sequence`, `context-sensitive-cursor`).
 Scene 2 (3.2–5.0s): the violet submit control compresses and recovers (`press-release-spring`); the composer folds into a slim action rail as “WebMCP turns intent into typed actions” lands.
-Scene 3 (5.0–8.8s): receipt row 01 arrives—`apply_template` with “Product Launch”—then checks off (`spring-pop-entrance`, `svg-path-draw`). The live editor brightens slightly and the template label is highlighted.
-Scene 4 (8.8–12.2s): receipt row 02 arrives—`add_text` with “CHASE THE SUN”—and checks off; the canvas headline is outlined as the narration says “add copy.”
-Scene 5 (12.2–15.0s): receipt row 03 arrives—`add_shape` with “sun / circle”—and checks off; a violet target ring marks the inserted element as the narration says “place a shape.”
-Scene 6 (15.0–18.0s): the three receipts consolidate into a compact “3 actions applied” rail while the fully editable canvas occupies the right two-thirds; “receipt for every change” highlights and holds. Camera locked throughout machine theater.
+Scene 3 (5.0–8.8s): receipt row 01 arrives—`visually_create_campaign` with “5 coordinated formats”—then checks off (`spring-pop-entrance`, `svg-path-draw`). The real five-page strip highlights in the captured editor.
+Scene 4 (8.8–12.2s): receipt row 02 arrives—`visually_apply_brand_update` with “5 pages · 30 elements”—and checks off; the updated NOVA headline is outlined as the narration says “brand-wide revision.”
+Scene 5 (12.2–15.0s): receipt row 03 arrives—`visually_audit_design` with “5 pages checked · read-only”—and checks off; a compact all-pages audit badge resolves.
+Scene 6 (15.0–18.0s): the three receipts consolidate into a compact “5 formats coordinated” rail while the editable campaign occupies the right two-thirds; “undoable · inspectable receipts” highlights and holds. Camera locked throughout machine theater.
 
 ## Frame 4 — Human judgment stays in the loop
 
@@ -158,7 +158,7 @@ Scene 5 (12.0–14.0s): the cards dim to reveal one centered line—“Your work
 ## Frame 6 — Built for real creative range
 
 - scene: A restrained card cascade presents the verified product breadth: templates, creative tools, typed WebMCP tools, responsive formats, and local persistence.
-- voiceover: "Start from eighteen polished templates. Work with text, shapes, media, tables, drawing, effects, animation, and fourteen typed WebMCP tools — all in one focused studio."
+- voiceover: "Start from eighteen polished templates. Work with text, shapes, media, tables, drawing, effects, animation, and seventeen typed WebMCP tools — all in one focused studio."
 - duration: 12s
 - poster: 9s
 - transition_in: squeeze
@@ -178,7 +178,7 @@ keyMessage: Visually has the range of a serious editor and an agent-native inter
 
 Scene 1 (0.0–2.2s): a tight template-strip crop from the real editor anchors the left third; “18 polished templates” enters as the single dominant violet numeral and near-black label.
 Scene 2 (2.2–7.8s): eight compact capability pills assemble directly into a 2×4 grid on the right—Text, Shapes, Media, Tables, Draw, Effects, Animation, Resize—each arriving on its spoken cue with short-path stagger (`center-outward-expansion`).
-Scene 3 (7.8–10.2s): a ninth, wider violet-tint card arrives beneath the grid: “14 typed WebMCP tools”; its check outline self-draws (`svg-path-draw`) and becomes the focal item.
+Scene 3 (7.8–10.2s): a ninth, wider violet-tint card arrives beneath the grid: “17 typed WebMCP tools”; its check outline self-draws (`svg-path-draw`) and becomes the focal item.
 Scene 4 (10.2–12.0s): the array settles with no float; the phrase “one focused studio” wipes in above the persistent product crop and holds.
 
 ## Frame 7 — Design together
