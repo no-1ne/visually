@@ -19,9 +19,10 @@ Created for The WebMCP Challenge.
 
 ## Settings
 
-- Visibility: Public
+- Published URL: https://youtu.be/iZvxaMjk-vE
+- Visibility: Unlisted
 - Category: Science & Technology
 - Audience: No, it is not made for kids
 - Language: English
-- Thumbnail: `05-visually-lockup.png`
+- Thumbnail: YouTube-generated frame (the channel requires phone verification before custom thumbnails can be used)
 - Tags: WebMCP, AI agents, design editor, image editor, React, Konva, Cloudflare Workers, browser AI
