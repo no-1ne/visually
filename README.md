@@ -2,7 +2,7 @@
 
 An independent Canva-style design editor built with React 19, Vite, TypeScript, Konva, Zustand, and shadcn/Base UI.
 
-> Open-source preparation is in progress. No license has been selected yet, so the code is not licensed for redistribution until a `LICENSE` file is added.
+Licensed under the [MIT License](LICENSE).
 
 ## Run locally
 

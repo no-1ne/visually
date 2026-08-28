@@ -89,11 +89,11 @@ The visible UI remains fully operable throughout the tool sequence. On a browser
 
 ## Public repository
 
-Pending final visibility/license approval: https://github.com/no-1ne/visually
+MIT-licensed repository prepared at https://github.com/no-1ne/visually. Public visibility and push remain pending final approval.
 
 ## Video
 
-An 84-second, seven-scene narrated HyperFrames composition is complete and validated. It uses original product capture, local voice synthesis, locally bundled sound effects, and no music. The render and public YouTube upload await final approval.
+An 84-second, seven-scene narrated HyperFrames composition is complete, validated, and rendered to `videos/visually-challenge/renders/video.mp4`. It uses original product capture, local voice synthesis, locally bundled sound effects, and no music. The public YouTube upload awaits final approval.
 
 ## Gallery media
 
@@ -101,10 +101,9 @@ Five original 1920×1080 submission stills are ready in `submission-media/`, ord
 
 ## Required submitter fields still needed
 
-- Submitter type: [user input required]
-- Country of residence: [user input required]
-- App status (New or Existing): [user input required]
-- If Existing: exact prior scope versus WebMCP Challenge work [user input required]
+- Submitter type: Individual
+- Country of residence: India
+- App status: New
 - Agents/clients tested: ChatGPT in-app Browser access and live UI mutation/undo verified; WebMCP registration and tool invocation verified in the Chromium host E2E harness. Add any additional external WebMCP client after final live invocation.
 
 ## AI tools used during development

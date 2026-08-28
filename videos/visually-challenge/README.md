@@ -5,14 +5,14 @@ An 84-second, seven-scene HyperFrames composition built from original Visually p
 ## Review locally
 
 ```bash
-npx --yes hyperframes@0.8.16 check
-npx --yes hyperframes@0.8.16 preview
+npx --yes hyperframes@0.8.17 check
+npx --yes hyperframes@0.8.17 preview
 ```
 
 ## Render
 
 ```bash
-npx --yes hyperframes@0.8.16 render
+npx --yes hyperframes@0.8.17 render
 ```
 
 The composition is 1920×1080 and 84 seconds. Narration was synthesized locally with Kokoro (`af_nova`). Sound effects are the locally bundled HyperFrames catalog cues listed in `audio_meta.json`; the film intentionally contains no music. All visual content is original product capture or code-native motion graphics.
