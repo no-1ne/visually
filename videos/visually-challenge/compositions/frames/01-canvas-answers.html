@@ -1,0 +1,374 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "DM Sans";
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAfJthTg.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400 800;
+      font-display: swap;
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      color: #0a0a0a;
+      font-family: "DM Sans";
+    }
+
+    [class~="01-canvas-answers-ground"] {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+    }
+
+    [class~="01-canvas-answers-stage"] {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    [class~="01-canvas-answers-world"] {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      transform-origin: 50% 50%;
+      will-change: transform;
+    }
+
+    [class~="01-canvas-answers-editor-layer"] {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      object-fit: cover;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    [class~="01-canvas-answers-editor-base"] {
+      filter: brightness(0.76) saturate(0.9);
+    }
+
+    [class~="01-canvas-answers-editor-poster"] {
+      clip-path: inset(14.1% 19.8% 10.2% 37.2% round 12px);
+      filter: brightness(0.9) saturate(0.96);
+      will-change: transform;
+    }
+
+    [class~="01-canvas-answers-editor-type"] {
+      clip-path: inset(27.5% 35.2% 47.2% 40.8% round 8px);
+      filter: brightness(1.04) saturate(1.02);
+      will-change: transform;
+    }
+
+    [class~="01-canvas-answers-soft-vignette"] {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(10, 10, 10, 0.08), transparent 30%, transparent 78%, rgba(10, 10, 10, 0.05)),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 72%, rgba(10, 10, 10, 0.08));
+      pointer-events: none;
+    }
+
+    [class~="01-canvas-answers-focus-target"] {
+      position: absolute;
+      left: 1014px;
+      top: 438px;
+      width: 2px;
+      height: 2px;
+      pointer-events: none;
+    }
+
+    [class~="01-canvas-answers-question"] {
+      position: absolute;
+      left: 775px;
+      top: 292px;
+      display: flex;
+      align-items: baseline;
+      gap: 15px;
+      min-height: 76px;
+      padding: 14px 24px 12px;
+      overflow: hidden;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.94);
+      color: #0a0a0a;
+      font-size: 55px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+    }
+
+    [class~="01-canvas-answers-question-word"] {
+      display: inline-block;
+      will-change: transform, opacity, filter;
+    }
+
+    [class~="01-canvas-answers-question-mark"] {
+      margin-left: -8px;
+      color: #7657ff;
+    }
+
+    [class~="01-canvas-answers-selection"] {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    [class~="01-canvas-answers-selection-rect"] {
+      fill: none;
+      stroke: #7657ff;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      vector-effect: non-scaling-stroke;
+    }
+
+    [class~="01-canvas-answers-selection-handle"] {
+      fill: #ffffff;
+      stroke: #7657ff;
+      stroke-width: 3;
+      vector-effect: non-scaling-stroke;
+    }
+
+    [class~="01-canvas-answers-payoff"] {
+      position: absolute;
+      left: 1048px;
+      top: 687px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 70px;
+      padding: 13px 24px 14px;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.94);
+      color: #9a9a9a;
+      font-size: 38px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: -0.02em;
+      white-space: nowrap;
+      transform-origin: 50% 50%;
+    }
+
+    [class~="01-canvas-answers-payoff-word"] {
+      display: inline-block;
+      transform-origin: 50% 50%;
+      text-shadow: 0 0 0 rgba(118, 87, 255, 0);
+      will-change: transform, color, text-shadow;
+    }
+
+    [class~="01-canvas-answers-payoff-word"][class~="01-canvas-answers-payoff-brand"] {
+      color: #7657ff;
+    }
+  </style>
+
+  <div data-hf-id="hf-iaxd" id="root" data-composition-id="01-canvas-answers" data-width="1920" data-height="1080" data-duration="8.4">
+    <div data-hf-id="hf-ffow" class="clip 01-canvas-answers-ground" data-start="0" data-duration="8.4" data-track-index="0"></div>
+
+    <div data-hf-id="hf-mekk" class="clip 01-canvas-answers-stage" data-start="0" data-duration="8.4" data-track-index="1">
+      <div data-hf-id="hf-jq70" class="01-canvas-answers-world" id="01-canvas-answers-world">
+        <img data-hf-id="hf-1yx9" class="01-canvas-answers-editor-layer 01-canvas-answers-editor-base" src="assets/visually-editor.png" alt="">
+        <img data-hf-id="hf-s17h" class="01-canvas-answers-editor-layer 01-canvas-answers-editor-poster" id="01-canvas-answers-poster-layer" src="assets/visually-editor.png" alt="">
+        <img data-hf-id="hf-oizh" class="01-canvas-answers-editor-layer 01-canvas-answers-editor-type" id="01-canvas-answers-type-layer" src="assets/visually-editor.png" alt="">
+        <div data-hf-id="hf-ujvs" class="01-canvas-answers-soft-vignette"></div>
+
+        <div data-hf-id="hf-3z5q" class="01-canvas-answers-focus-target" id="01-canvas-answers-focus-target"></div>
+
+        <div data-hf-id="hf-na2s" class="01-canvas-answers-question" aria-hidden="true">
+          <span data-hf-id="hf-bvz7" class="01-canvas-answers-question-word">WHAT</span>
+          <span data-hf-id="hf-68ci" class="01-canvas-answers-question-word">IF</span>
+          <span data-hf-id="hf-z7p9" class="01-canvas-answers-question-word 01-canvas-answers-question-mark">?</span>
+        </div>
+
+        <svg data-hf-id="hf-fz8d" class="01-canvas-answers-selection" viewBox="0 0 1920 1080" aria-hidden="true">
+          <rect data-hf-id="hf-d5w0" class="01-canvas-answers-selection-rect" id="01-canvas-answers-selection-path" x="790" y="329" width="450" height="205" rx="10" />
+          <circle data-hf-id="hf-h6r2" class="01-canvas-answers-selection-handle" cx="790" cy="329" r="7" />
+          <circle data-hf-id="hf-7meb" class="01-canvas-answers-selection-handle" cx="1240" cy="329" r="7" />
+          <circle data-hf-id="hf-tz6u" class="01-canvas-answers-selection-handle" cx="790" cy="534" r="7" />
+          <circle data-hf-id="hf-d4c7" class="01-canvas-answers-selection-handle" cx="1240" cy="534" r="7" />
+        </svg>
+
+        <div data-hf-id="hf-5qvv" class="01-canvas-answers-payoff" id="01-canvas-answers-payoff" aria-hidden="true">
+          <span data-hf-id="hf-j7ei" class="01-canvas-answers-payoff-word" data-word="help">HELP</span>
+          <span data-hf-id="hf-1ae6" class="01-canvas-answers-payoff-word" data-word="finish">FINISH</span>
+          <span data-hf-id="hf-u7i7" class="01-canvas-answers-payoff-word 01-canvas-answers-payoff-brand" data-word="it">IT?</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="01-canvas-answers"]');
+      const world = document.getElementById('01-canvas-answers-world');
+      const focusTarget = document.getElementById('01-canvas-answers-focus-target');
+      const posterLayer = document.getElementById('01-canvas-answers-poster-layer');
+      const typeLayer = document.getElementById('01-canvas-answers-type-layer');
+      const questionWords = Array.from(root.querySelectorAll('[class~="01-canvas-answers-question-word"]'));
+      const selectionPath = document.getElementById('01-canvas-answers-selection-path');
+      const selectionHandles = Array.from(root.querySelectorAll('[class~="01-canvas-answers-selection-handle"]'));
+      const payoff = document.getElementById('01-canvas-answers-payoff');
+      const payoffWords = Array.from(root.querySelectorAll('[class~="01-canvas-answers-payoff-word"]'));
+
+      const rootRect = root.getBoundingClientRect();
+      const targetRect = focusTarget.getBoundingClientRect();
+      const renderedScaleX = rootRect.width / 1920 || 1;
+      const renderedScaleY = rootRect.height / 1080 || 1;
+      const targetOffsetX = ((targetRect.left + targetRect.width / 2) - (rootRect.left + rootRect.width / 2)) / renderedScaleX;
+      const targetOffsetY = ((targetRect.top + targetRect.height / 2) - (rootRect.top + rootRect.height / 2)) / renderedScaleY;
+
+      const OPEN_SCALE = 3.05;
+      const cam = {
+        scale: OPEN_SCALE,
+        x: -targetOffsetX * OPEN_SCALE,
+        y: -targetOffsetY * OPEN_SCALE,
+      };
+
+      function applyCamera() {
+        world.style.transform = `translate(${cam.x}px, ${cam.y}px) scale(${cam.scale})`;
+      }
+      applyCamera();
+
+      const outlineLength = selectionPath.getTotalLength();
+      selectionPath.style.strokeDasharray = `${outlineLength}`;
+      selectionPath.style.strokeDashoffset = `${outlineLength}`;
+
+      const QUESTION_CONTENT = [
+        { text: 'WHAT', hold: 0.12 },
+        { text: 'IF', hold: 0.1 },
+        { text: '?', hold: 0.18 },
+      ];
+      const QUESTION_BASE_DURATION = 0.16;
+      const QUESTION_SEC_PER_CHAR = 0.025;
+      let questionCursor = 0.16;
+      const QUESTION_TIMELINE = QUESTION_CONTENT.map((entry, index) => {
+        const duration = QUESTION_BASE_DURATION + entry.text.length * QUESTION_SEC_PER_CHAR + entry.hold;
+        const start = questionCursor;
+        questionCursor += duration;
+        return { ...entry, index, start, end: questionCursor };
+      });
+
+      const tl = gsap.timeline({ paused: true });
+
+      QUESTION_TIMELINE.forEach((entry) => {
+        tl.fromTo(
+          questionWords[entry.index],
+          { opacity: 0, y: 24, filter: 'blur(12px)' },
+          { opacity: 1, y: 0, filter: 'blur(0px)', duration: Math.min(0.42, entry.end - entry.start + 0.12), ease: 'power3.out' },
+          entry.start,
+        );
+      });
+
+      tl.fromTo(
+        posterLayer,
+        { x: -5, y: 4, scale: 1.008 },
+        { x: 0, y: 0, scale: 1, duration: 2.2, ease: 'power2.out' },
+        0,
+      );
+      tl.fromTo(
+        typeLayer,
+        { x: -11, y: 8, scale: 1.016 },
+        { x: 0, y: 0, scale: 1, duration: 2.35, ease: 'power3.out' },
+        0,
+      );
+
+      tl.to(
+        cam,
+        {
+          scale: 1,
+          x: 0,
+          y: 0,
+          duration: 3.3,
+          ease: 'expo.out',
+          onUpdate: applyCamera,
+        },
+        2.5,
+      );
+
+      tl.fromTo(
+        payoff,
+        { opacity: 0, y: 18, filter: 'blur(10px)' },
+        { opacity: 1, y: 0, filter: 'blur(0px)', duration: 0.42, ease: 'power2.out' },
+        5.72,
+      );
+
+      tl.to(
+        selectionPath,
+        { strokeDashoffset: 0, duration: 0.8, ease: 'power2.out' },
+        5.86,
+      );
+      tl.fromTo(
+        selectionHandles,
+        { opacity: 0, scale: 0.7, transformOrigin: 'center center' },
+        { opacity: 1, scale: 1, duration: 0.3, stagger: 0.07, ease: 'power2.out' },
+        6.48,
+      );
+
+      const PAYOFF_TIMINGS = {
+        help: { start: 0.15, end: 0.35 },
+        finish: { start: 0.5, end: 0.75 },
+        it: { start: 0.9, end: 1.1 },
+      };
+      const ATTACK_DUR = 0.12;
+      const RELEASE = 0.32;
+      const REST_LEVEL = 0.1;
+      const MAX_BLUR = 36;
+      const MAX_SCALE_BOOST = 0.18;
+      const REST_RGB = { r: 154, g: 154, b: 154 };
+      const ACTIVE_RGB = { r: 10, g: 10, b: 10 };
+      const BRAND_RGB = { r: 118, g: 87, b: 255 };
+
+      function envelope(time, start, end) {
+        if (time < start) return 0;
+        if (time < end) return Math.min((time - start) / ATTACK_DUR, 1);
+        const releaseEnd = end + RELEASE;
+        if (time < releaseEnd) return 1 - ((time - end) / RELEASE) * (1 - REST_LEVEL);
+        return REST_LEVEL;
+      }
+
+      function lerpChannel(a, b, amount) {
+        return Math.round(a + (b - a) * amount);
+      }
+
+      function colorAt(amount, isBrand) {
+        const target = isBrand ? BRAND_RGB : ACTIVE_RGB;
+        return `rgb(${lerpChannel(REST_RGB.r, target.r, amount)}, ${lerpChannel(REST_RGB.g, target.g, amount)}, ${lerpChannel(REST_RGB.b, target.b, amount)})`;
+      }
+
+      const payoffDriver = { t: 0 };
+      tl.to(
+        payoffDriver,
+        {
+          t: 2.2,
+          duration: 2.2,
+          ease: 'none',
+          onUpdate: () => {
+            payoffWords.forEach((word) => {
+              const timing = PAYOFF_TIMINGS[word.dataset.word];
+              const amount = envelope(payoffDriver.t, timing.start, timing.end);
+              word.style.color = colorAt(amount, word.classList.contains('01-canvas-answers-payoff-brand'));
+              word.style.textShadow = `0 0 ${MAX_BLUR * amount}px rgba(118, 87, 255, ${0.52 * amount})`;
+              word.style.transform = `scale(${1 + MAX_SCALE_BOOST * amount})`;
+            });
+          },
+        },
+        5.8,
+      );
+
+      window.__timelines = window.__timelines || {};
+      window.__timelines['01-canvas-answers'] = tl;
+    })();
+  </script>
+</template>

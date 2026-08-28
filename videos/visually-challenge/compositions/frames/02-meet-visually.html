@@ -1,0 +1,381 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "DM Sans";
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhTg.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAfJthTg.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 600;
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTg.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    #root {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      container-type: size;
+      font-family: "DM Sans";
+      color: #0a0a0a;
+    }
+
+    [id="02-meet-visually-ground"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+    }
+
+    [id="02-meet-visually-stage"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    [id="02-meet-visually-eyebrow"] {
+      position: absolute;
+      top: 5.4cqh;
+      left: 5cqw;
+      display: flex;
+      align-items: center;
+      gap: 0.75cqw;
+      color: #7657ff;
+      font-size: 0.8cqw;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    [id="02-meet-visually-eyebrow-rule"] {
+      display: block;
+      width: 3.125cqw;
+      height: 4px;
+      border-radius: 2px;
+      background: #7657ff;
+    }
+
+    [id="02-meet-visually-editor"] {
+      position: absolute;
+      top: 12.4cqh;
+      left: 11.5cqw;
+      width: 61.5cqw;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 14px;
+      background: rgba(118, 87, 255, 0.04);
+      transform-origin: 0% 50%;
+    }
+
+    [id="02-meet-visually-editor-image"] {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    [id="02-meet-visually-copy-anchor"] {
+      position: absolute;
+      top: 20.5cqh;
+      left: 53.3cqw;
+      width: 41.7cqw;
+      min-height: 53cqh;
+    }
+
+    [id="02-meet-visually-category"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      min-height: 24cqh;
+      color: #0a0a0a;
+      font-size: 4.15cqw;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.02;
+    }
+
+    [data-02-meet-visually-word] {
+      display: block;
+      width: max-content;
+      max-width: 100%;
+      white-space: nowrap;
+    }
+
+    [data-02-meet-visually-word="design"] {
+      color: #4d35b5;
+    }
+
+    [id="02-meet-visually-people"] {
+      position: absolute;
+      top: 4.5cqh;
+      left: 0;
+      width: max-content;
+      color: #0a0a0a;
+      font-size: 4.2cqw;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    [id="02-meet-visually-plus"] {
+      color: #7657ff;
+      padding: 0 0.28em;
+    }
+
+    [id="02-meet-visually-connector"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    [id="02-meet-visually-connector-path"] {
+      fill: none;
+      stroke: #7657ff;
+      stroke-width: 5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    [id="02-meet-visually-connector-dot"] {
+      fill: #7657ff;
+    }
+
+    [id="02-meet-visually-stamp"] {
+      position: absolute;
+      top: 34cqh;
+      left: 0;
+      width: 38.8cqw;
+      height: 11.2cqh;
+      display: flex;
+      align-items: center;
+    }
+
+    [id="02-meet-visually-bloom"] {
+      position: absolute;
+      z-index: 1;
+      top: -4.2cqh;
+      left: -2.8cqw;
+      width: 42cqw;
+      height: 19cqh;
+      border-radius: 50%;
+      background: radial-gradient(ellipse at center, rgba(77, 53, 181, 0.42) 0%, rgba(77, 53, 181, 0.14) 45%, rgba(77, 53, 181, 0) 76%);
+      transform-origin: 50% 50%;
+    }
+
+    [id="02-meet-visually-pill"] {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      height: 8.9cqh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 100px;
+      background: #7657ff;
+      color: #ffffff;
+      transform-origin: 0% 50%;
+    }
+
+    [id="02-meet-visually-pill-copy"] {
+      font-size: 2.05cqw;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    [id="02-meet-visually-progress"] {
+      position: absolute;
+      top: 82.3cqh;
+      left: 5cqw;
+      width: 90cqw;
+      height: 3px;
+      overflow: hidden;
+      background: rgba(118, 87, 255, 0.08);
+    }
+
+    [id="02-meet-visually-progress-fill"] {
+      display: block;
+      width: 28%;
+      height: 100%;
+      background: #7657ff;
+    }
+  </style>
+
+  <div data-hf-id="hf-hhp1" id="root" data-composition-id="02-meet-visually" data-width="1920" data-height="1080" data-duration="10.5">
+    <div data-hf-id="hf-0rcy" id="02-meet-visually-ground" class="clip" data-start="0" data-duration="10.5" data-track-index="0"></div>
+
+    <div data-hf-id="hf-ef52" id="02-meet-visually-stage" class="clip" data-start="0" data-duration="10.5" data-track-index="1">
+      <div data-hf-id="hf-09k5" id="02-meet-visually-eyebrow">
+        <span data-hf-id="hf-5wt5" id="02-meet-visually-eyebrow-rule"></span>
+        <span data-hf-id="hf-rjqm">Visually</span>
+      </div>
+
+      <div data-hf-id="hf-dzyn" id="02-meet-visually-editor">
+        <img data-hf-id="hf-8ppo" id="02-meet-visually-editor-image" src="assets/visually-editor.png" alt="Visually browser editor">
+      </div>
+
+      <div data-hf-id="hf-7n13" id="02-meet-visually-copy-anchor">
+        <div data-hf-id="hf-m6hc" id="02-meet-visually-category" aria-label="browser-first design studio">
+          <span data-hf-id="hf-ymrk" data-02-meet-visually-word="browser" data-layout-allow-overlap="">browser-first</span>
+          <span data-hf-id="hf-hmt3" data-02-meet-visually-word="design" data-layout-allow-overlap="">design studio</span>
+        </div>
+
+        <div data-hf-id="hf-dfel" id="02-meet-visually-people">
+          <span data-hf-id="hf-86yi">people</span><span data-hf-id="hf-zb4m" id="02-meet-visually-plus">+</span><span data-hf-id="hf-97vv">agents</span>
+        </div>
+
+        <div data-hf-id="hf-jv69" id="02-meet-visually-stamp">
+          <div data-hf-id="hf-nllx" id="02-meet-visually-bloom"></div>
+          <div data-hf-id="hf-jok5" id="02-meet-visually-pill">
+            <span data-hf-id="hf-f9m0" id="02-meet-visually-pill-copy">same editable canvas</span>
+          </div>
+        </div>
+      </div>
+
+      <svg data-hf-id="hf-zuez" id="02-meet-visually-connector" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path data-hf-id="hf-ez8f" id="02-meet-visually-connector-path" d="M 1160 388 C 1088 388, 1022 388, 922 388" />
+        <circle data-hf-id="hf-x7f4" id="02-meet-visually-connector-dot" cx="922" cy="388" r="8" />
+      </svg>
+
+      <div data-hf-id="hf-4mjh" id="02-meet-visually-progress">
+        <span data-hf-id="hf-sjz6" id="02-meet-visually-progress-fill"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    window.__timelines = window.__timelines || {};
+    const tl = gsap.timeline({ paused: true });
+    window.__timelines["02-meet-visually"] = tl;
+
+    const connectorPath = document.getElementById("02-meet-visually-connector-path");
+    const connectorLength = connectorPath.getTotalLength();
+    connectorPath.style.strokeDasharray = String(connectorLength);
+    connectorPath.style.strokeDashoffset = String(connectorLength);
+
+    const categoryWords = Array.from(document.querySelectorAll("[data-02-meet-visually-word]"));
+    const categorySchedule = categoryWords.reduce((schedule, word, index) => {
+      const previousEnd = index === 0 ? 3.12 : schedule[index - 1].end;
+      const readTime = 0.38 + word.textContent.length * 0.018;
+      schedule.push({ word, start: previousEnd, end: previousEnd + readTime });
+      return schedule;
+    }, []);
+
+    tl.set('[id="02-meet-visually-people"]', { opacity: 0, x: 230 }, 0);
+    tl.set('[id="02-meet-visually-connector-dot"]', { opacity: 0, scale: 0, transformOrigin: "50% 50%" }, 0);
+    tl.set('[id="02-meet-visually-pill"]', { opacity: 0, scaleX: 0 }, 0);
+    tl.set('[id="02-meet-visually-pill-copy"]', { opacity: 0, y: 10 }, 0);
+    tl.set('[id="02-meet-visually-bloom"]', { opacity: 0, scale: 0.82 }, 0);
+
+    categoryWords.forEach((word) => {
+      tl.set(word, { opacity: 0, y: 34 }, 0);
+    });
+
+    tl.fromTo(
+      '[id="02-meet-visually-editor"]',
+      { opacity: 0.36, scale: 0.93, y: 22 },
+      { opacity: 1, scale: 1, y: 0, duration: 0.82, ease: "power3.out" },
+      0
+    );
+    tl.fromTo(
+      '[id="02-meet-visually-eyebrow"]',
+      { opacity: 0, x: -24 },
+      { opacity: 1, x: 0, duration: 0.58, ease: "power3.out" },
+      0.18
+    );
+    tl.fromTo(
+      '[id="02-meet-visually-editor"]',
+      { y: 0 },
+      { y: -8, duration: 1.4, ease: "sine.inOut" },
+      1.28
+    );
+
+    tl.to(
+      '[id="02-meet-visually-editor"]',
+      { x: -132, y: 0, scale: 0.72, duration: 1.15, ease: "power3.out" },
+      3
+    );
+
+    categorySchedule.forEach(({ word, start, end }) => {
+      tl.fromTo(
+        word,
+        { opacity: 0, y: 34 },
+        { opacity: 1, y: 0, duration: end - start, ease: "power3.out" },
+        start
+      );
+    });
+
+    categoryWords.forEach((word, index) => {
+      tl.to(
+        word,
+        { x: -230, duration: 0.34, ease: "power4.in" },
+        6.06 + index * 0.022
+      );
+      tl.to(
+        word,
+        { opacity: 0, duration: 0.18, ease: "power1.in" },
+        6.18 + index * 0.022
+      );
+    });
+
+    tl.fromTo(
+      '[id="02-meet-visually-people"]',
+      { x: 230, opacity: 0.35 },
+      { x: 0, opacity: 1, duration: 0.42, ease: "power4.out" },
+      6.4
+    );
+    tl.to(
+      '[id="02-meet-visually-connector-path"]',
+      { strokeDashoffset: 0, duration: 0.72, ease: "power2.out" },
+      6.86
+    );
+    tl.fromTo(
+      '[id="02-meet-visually-connector-dot"]',
+      { opacity: 0, scale: 0, transformOrigin: "50% 50%" },
+      { opacity: 1, scale: 1, duration: 0.28, ease: "power2.out" },
+      7.45
+    );
+
+    tl.fromTo(
+      '[id="02-meet-visually-pill"]',
+      { opacity: 0.4, scaleX: 0 },
+      { opacity: 1, scaleX: 1, duration: 0.48, ease: "power3.out" },
+      8.6
+    );
+    tl.fromTo(
+      '[id="02-meet-visually-pill-copy"]',
+      { opacity: 0, y: 10 },
+      { opacity: 1, y: 0, duration: 0.38, ease: "power2.out" },
+      8.82
+    );
+    tl.fromTo(
+      '[id="02-meet-visually-bloom"]',
+      { opacity: 0, scale: 0.82 },
+      { opacity: 0.28, scale: 1, duration: 0.78, ease: "power2.out" },
+      8.9
+    );
+  </script>
+</template>

@@ -1,0 +1,437 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhTg.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAkJxhTg.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAfJthTg.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTg.ttf") format("truetype");
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      color: #0a0a0a;
+      font-family: "DM Sans";
+    }
+
+    #root * {
+      box-sizing: border-box;
+    }
+
+    #root [class~="06-creative-range-bg"] {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    #root [class~="06-creative-range-bg-image"] {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.18;
+      filter: saturate(0.72);
+    }
+
+    #root [class~="06-creative-range-bg-wash"] {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255, 255, 255, 0.70) 0%, rgba(255, 255, 255, 0.90) 40%, rgba(255, 255, 255, 0.96) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.54) 0%, #ffffff 84%);
+    }
+
+    #root [class~="06-creative-range-stage"] {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    #root [class~="06-creative-range-payoff"] {
+      position: absolute;
+      top: 58px;
+      left: 96px;
+      width: 666px;
+      overflow: hidden;
+      color: #0a0a0a;
+      font-size: 54px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+      white-space: nowrap;
+      will-change: clip-path, opacity;
+    }
+
+    #root [class~="06-creative-range-crop"] {
+      position: absolute;
+      top: 156px;
+      left: 96px;
+      width: 666px;
+      height: 700px;
+      overflow: hidden;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 14px;
+      background: rgba(118, 87, 255, 0.04);
+      will-change: transform, opacity;
+    }
+
+    #root [class~="06-creative-range-crop-image"] {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 1920px;
+      height: 1080px;
+      max-width: none;
+      object-fit: none;
+      object-position: left top;
+    }
+
+    #root [class~="06-creative-range-crop-wash"] {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.02) 50%, rgba(255, 255, 255, 0.88) 100%);
+      pointer-events: none;
+    }
+
+    #root [class~="06-creative-range-template-stat"] {
+      position: absolute;
+      left: 28px;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      min-width: 410px;
+      min-height: 120px;
+      padding: 18px 26px;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.96);
+      will-change: transform, opacity;
+    }
+
+    #root [class~="06-creative-range-template-number"] {
+      color: #7657ff;
+      font-size: 84px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+    }
+
+    #root [class~="06-creative-range-template-label"] {
+      max-width: 210px;
+      color: #0a0a0a;
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+
+    #root [class~="06-creative-range-grid"] {
+      position: absolute;
+      top: 160px;
+      left: 822px;
+      width: 972px;
+      height: 560px;
+    }
+
+    #root [class~="06-creative-range-capability"] {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 454px;
+      height: 112px;
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 20px 24px;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 14px;
+      background: rgba(250, 248, 255, 0.96);
+      will-change: transform, opacity;
+    }
+
+    #root [class~="06-creative-range-capability-icon"] {
+      display: grid;
+      width: 48px;
+      height: 48px;
+      flex: 0 0 48px;
+      place-items: center;
+      border-radius: 12px;
+      background: rgba(118, 87, 255, 0.08);
+      color: #7657ff;
+    }
+
+    #root [class~="06-creative-range-capability-icon"] svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    #root [class~="06-creative-range-capability-label"] {
+      color: #0a0a0a;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    #root [class~="06-creative-range-webmcp"] {
+      position: absolute;
+      top: 742px;
+      left: 822px;
+      width: 972px;
+      height: 116px;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 20px 28px;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 14px;
+      background: rgba(118, 87, 255, 0.08);
+      will-change: transform, opacity;
+    }
+
+    #root [class~="06-creative-range-check"] {
+      width: 70px;
+      height: 70px;
+      flex: 0 0 70px;
+      color: #7657ff;
+    }
+
+    #root [class~="06-creative-range-check-ring"],
+    #root [class~="06-creative-range-check-path"] {
+      fill: none;
+      stroke: currentColor;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #root [class~="06-creative-range-check-ring"] {
+      stroke-width: 2.5;
+      transform: rotate(-90deg);
+      transform-origin: 35px 35px;
+    }
+
+    #root [class~="06-creative-range-check-path"] {
+      stroke-width: 3.4;
+    }
+
+    #root [class~="06-creative-range-webmcp-number"] {
+      color: #7657ff;
+      font-size: 54px;
+      font-weight: 700;
+      letter-spacing: -0.035em;
+      line-height: 1;
+    }
+
+    #root [class~="06-creative-range-webmcp-label"] {
+      color: #0a0a0a;
+      font-size: 31px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
+    }
+  </style>
+
+  <div data-hf-id="hf-zk8e" id="root" data-composition-id="06-creative-range" data-width="1920" data-height="1080" data-duration="12.6">
+    <div data-hf-id="hf-b1xn" class="clip 06-creative-range-bg" data-start="0" data-duration="12.6" data-track-index="0">
+      <img data-hf-id="hf-dze3" class="06-creative-range-bg-image" src="assets/visually-editor.png" alt="">
+      <div data-hf-id="hf-89ac" class="06-creative-range-bg-wash"></div>
+    </div>
+
+    <div data-hf-id="hf-rzwp" class="clip 06-creative-range-stage" data-start="0" data-duration="12.6" data-track-index="1">
+      <div data-hf-id="hf-91ol" class="06-creative-range-payoff">one focused studio</div>
+
+      <div data-hf-id="hf-35qb" class="06-creative-range-crop">
+        <img data-hf-id="hf-l6p1" class="06-creative-range-crop-image" src="assets/visually-editor.png" alt="Visually editor template library">
+        <div data-hf-id="hf-nsuh" class="06-creative-range-crop-wash"></div>
+        <div data-hf-id="hf-psle" class="06-creative-range-template-stat">
+          <span data-hf-id="hf-705p" class="06-creative-range-template-number">18</span>
+          <span data-hf-id="hf-he9o" class="06-creative-range-template-label">polished templates</span>
+        </div>
+      </div>
+
+      <div data-hf-id="hf-ymgl" class="06-creative-range-grid">
+        <article data-hf-id="hf-gadm" class="06-creative-range-capability" data-target-x="-247" data-target-y="-198">
+          <span data-hf-id="hf-toog" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-38oo" viewBox="0 0 28 28" aria-hidden="true"><path data-hf-id="hf-adgn" d="M6 7h16M14 7v15M9.5 22h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          </span>
+          <span data-hf-id="hf-svvc" class="06-creative-range-capability-label">Text</span>
+        </article>
+        <article data-hf-id="hf-n533" class="06-creative-range-capability" data-target-x="247" data-target-y="-198">
+          <span data-hf-id="hf-o5jc" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-zdsg" viewBox="0 0 28 28" aria-hidden="true"><rect data-hf-id="hf-llmy" x="4" y="4" width="10" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="2" /><circle data-hf-id="hf-cwkw" cx="19" cy="19" r="5" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+          </span>
+          <span data-hf-id="hf-cwhd" class="06-creative-range-capability-label">Shapes</span>
+        </article>
+        <article data-hf-id="hf-3fjk" class="06-creative-range-capability" data-target-x="-247" data-target-y="-66">
+          <span data-hf-id="hf-mym9" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-y6vd" viewBox="0 0 28 28" aria-hidden="true"><rect data-hf-id="hf-yx1b" x="4" y="5" width="20" height="18" rx="3" fill="none" stroke="currentColor" stroke-width="2" /><circle data-hf-id="hf-vfsb" cx="10" cy="11" r="2" fill="currentColor" /><path data-hf-id="hf-9eyk" d="M6 20l5-5 4 4 3-3 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /></svg>
+          </span>
+          <span data-hf-id="hf-iar5" class="06-creative-range-capability-label">Media</span>
+        </article>
+        <article data-hf-id="hf-zbgv" class="06-creative-range-capability" data-target-x="247" data-target-y="-66">
+          <span data-hf-id="hf-ncxa" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-yl6e" viewBox="0 0 28 28" aria-hidden="true"><rect data-hf-id="hf-midi" x="4" y="5" width="20" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2" /><path data-hf-id="hf-26qb" d="M4 11h20M11 5v18M18 5v18" fill="none" stroke="currentColor" stroke-width="2" /></svg>
+          </span>
+          <span data-hf-id="hf-jipi" class="06-creative-range-capability-label">Tables</span>
+        </article>
+        <article data-hf-id="hf-00qj" class="06-creative-range-capability" data-target-x="-247" data-target-y="66">
+          <span data-hf-id="hf-m607" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-xe9b" viewBox="0 0 28 28" aria-hidden="true"><path data-hf-id="hf-l1q1" d="M6 21c5-9 9-14 15-15l1 4c-4 2-8 6-12 13z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path data-hf-id="hf-7rr5" d="M6 21l-1 3 3-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          </span>
+          <span data-hf-id="hf-ont9" class="06-creative-range-capability-label">Draw</span>
+        </article>
+        <article data-hf-id="hf-6z0q" class="06-creative-range-capability" data-target-x="247" data-target-y="66">
+          <span data-hf-id="hf-mkb8" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-xskc" viewBox="0 0 28 28" aria-hidden="true"><path data-hf-id="hf-ew5z" d="M14 3l1.8 6.2L22 11l-6.2 1.8L14 19l-1.8-6.2L6 11l6.2-1.8zM21 18l.9 3.1L25 22l-3.1.9L21 26l-.9-3.1L17 22l3.1-.9z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" /></svg>
+          </span>
+          <span data-hf-id="hf-tckb" class="06-creative-range-capability-label">Effects</span>
+        </article>
+        <article data-hf-id="hf-avwj" class="06-creative-range-capability" data-target-x="-247" data-target-y="198">
+          <span data-hf-id="hf-lde5" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-wln9" viewBox="0 0 28 28" aria-hidden="true"><circle data-hf-id="hf-qzag" cx="14" cy="14" r="9" fill="none" stroke="currentColor" stroke-width="2" /><path data-hf-id="hf-4joq" d="M12 10l7 4-7 4z" fill="currentColor" /></svg>
+          </span>
+          <span data-hf-id="hf-u71j" class="06-creative-range-capability-label">Animation</span>
+        </article>
+        <article data-hf-id="hf-6xbs" class="06-creative-range-capability" data-target-x="247" data-target-y="198">
+          <span data-hf-id="hf-lrp6" class="06-creative-range-capability-icon">
+            <svg data-hf-id="hf-wzya" viewBox="0 0 28 28" aria-hidden="true"><path data-hf-id="hf-uwtn" d="M5 11V5h6M17 5h6v6M23 17v6h-6M11 23H5v-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /><path data-hf-id="hf-yjkf" d="M5 5l6 6M23 5l-6 6M23 23l-6-6M5 23l6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" /></svg>
+          </span>
+          <span data-hf-id="hf-rdev" class="06-creative-range-capability-label">Resize</span>
+        </article>
+      </div>
+
+      <article data-hf-id="hf-co4q" class="06-creative-range-webmcp">
+        <svg data-hf-id="hf-r2ay" class="06-creative-range-check" viewBox="0 0 70 70" aria-hidden="true">
+          <circle data-hf-id="hf-e9em" class="06-creative-range-check-ring" cx="35" cy="35" r="27" />
+          <path data-hf-id="hf-1wkz" class="06-creative-range-check-path" d="M22 36l9 9 18-21" />
+        </svg>
+        <span data-hf-id="hf-77yp" class="06-creative-range-webmcp-number">14</span>
+        <span data-hf-id="hf-ncfy" class="06-creative-range-webmcp-label">typed WebMCP tools</span>
+      </article>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="06-creative-range"]');
+      const q = (selector) => root.querySelector(selector);
+      const qa = (selector) => Array.from(root.querySelectorAll(selector));
+      const crop = q('[class~="06-creative-range-crop"]');
+      const templateStat = q('[class~="06-creative-range-template-stat"]');
+      const capabilityCards = qa('[class~="06-creative-range-capability"]');
+      const webmcp = q('[class~="06-creative-range-webmcp"]');
+      const drawPaths = qa('[class~="06-creative-range-check-ring"], [class~="06-creative-range-check-path"]');
+      const payoff = q('[class~="06-creative-range-payoff"]');
+
+      drawPaths.forEach((path) => {
+        const length = path.getTotalLength();
+        path.style.strokeDasharray = `${length}`;
+        path.style.strokeDashoffset = `${length}`;
+      });
+
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["06-creative-range"] = tl;
+
+      tl.set(payoff, { opacity: 0, clipPath: "inset(0 100% 0 0)" }, 0);
+      tl.set(webmcp, { opacity: 0 }, 0);
+
+      tl.fromTo(
+        crop,
+        { x: -34, opacity: 0.5, scale: 0.988 },
+        { x: 0, opacity: 1, scale: 1, duration: 0.82, ease: "power3.out" },
+        0.02
+      );
+      tl.fromTo(
+        templateStat,
+        { x: -20, y: 10, scale: 0.96, opacity: 0 },
+        { x: 0, y: 0, scale: 1, opacity: 1, duration: 0.82, ease: "power3.out" },
+        0.32
+      );
+
+      const capabilityTimes = [2.22, 2.88, 3.54, 4.20, 4.88, 5.56, 6.26, 7.02];
+      capabilityCards.forEach((card, index) => {
+        const targetX = Number(card.dataset.targetX);
+        const targetY = Number(card.dataset.targetY);
+        tl.fromTo(
+          card,
+          {
+            xPercent: -50,
+            yPercent: -50,
+            x: targetX * 0.72,
+            y: targetY * 0.72,
+            scale: 0.94,
+            opacity: 0
+          },
+          {
+            xPercent: -50,
+            yPercent: -50,
+            x: targetX,
+            y: targetY,
+            scale: 1,
+            opacity: 1,
+            duration: 1.0,
+            ease: "power3.out"
+          },
+          capabilityTimes[index]
+        );
+      });
+
+      tl.fromTo(
+        webmcp,
+        { y: 26, scale: 0.965, opacity: 0 },
+        { y: 0, scale: 1, opacity: 1, duration: 0.86, ease: "power3.out", immediateRender: false },
+        7.82
+      );
+      tl.to(
+        drawPaths[0],
+        { strokeDashoffset: 0, duration: 0.72, ease: "power2.out" },
+        8.42
+      );
+      tl.to(
+        drawPaths[1],
+        { strokeDashoffset: 0, duration: 0.52, ease: "power2.out" },
+        8.96
+      );
+
+      tl.fromTo(
+        payoff,
+        { opacity: 0, clipPath: "inset(0 100% 0 0)" },
+        { opacity: 1, clipPath: "inset(0 0% 0 0)", duration: 0.9, ease: "power2.out", immediateRender: false },
+        10.22
+      );
+    })();
+  </script>
+</template>

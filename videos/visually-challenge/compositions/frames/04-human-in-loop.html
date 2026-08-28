@@ -1,0 +1,722 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhTg.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAkJxhTg.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAfJthTg.ttf") format("truetype");
+    }
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTg.ttf") format("truetype");
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      font-family: "DM Sans";
+      color: #0a0a0a;
+    }
+
+    [class~="04-human-in-loop-bg"] {
+      position: absolute;
+      inset: 0;
+      background: #ffffff;
+    }
+
+    [class~="04-human-in-loop-shot"] {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    [class~="04-human-in-loop-eyebrow"] {
+      position: absolute;
+      left: 96px;
+      top: 30px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #7053f2;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    [class~="04-human-in-loop-eyebrow-line"] {
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: #7657ff;
+    }
+
+    [class~="04-human-in-loop-stage"] {
+      position: absolute;
+      left: 64px;
+      top: 78px;
+      width: 1792px;
+      height: 780px;
+      overflow: hidden;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 14px;
+      background: rgba(118, 87, 255, 0.04);
+    }
+
+    [class~="04-human-in-loop-editor-capture"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 1792px;
+      height: auto;
+      opacity: 0.58;
+      filter: saturate(0.72) brightness(1.03);
+      pointer-events: none;
+    }
+
+    [class~="04-human-in-loop-capture-veil"] {
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.34);
+    }
+
+    [class~="04-human-in-loop-workspace-label"] {
+      position: absolute;
+      left: 34px;
+      top: 24px;
+      padding: 9px 15px;
+      border-radius: 100px;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      background: rgba(255, 255, 255, 0.92);
+      color: #4d35b5;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    [class~="04-human-in-loop-artboard"] {
+      position: absolute;
+      left: 584px;
+      top: 108px;
+      width: 620px;
+      height: 596px;
+      overflow: hidden;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 14px;
+      background: #172238;
+      transform-origin: 50% 50%;
+    }
+
+    [class~="04-human-in-loop-artboard-kicker"] {
+      position: absolute;
+      left: 58px;
+      top: 76px;
+      color: #c7ff3d;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+    }
+
+    [class~="04-human-in-loop-artboard-dot"] {
+      position: absolute;
+      right: 54px;
+      top: 52px;
+      width: 98px;
+      height: 98px;
+      border-radius: 50%;
+      background: #ffb447;
+    }
+
+    [class~="04-human-in-loop-headline-wrap"] {
+      position: absolute;
+      left: 54px;
+      top: 156px;
+      width: 438px;
+      height: 190px;
+    }
+
+    [class~="04-human-in-loop-headline"] {
+      position: absolute;
+      left: 12px;
+      top: 7px;
+      width: 410px;
+      color: #f7f2e8;
+      font-size: 68px;
+      font-weight: 500;
+      line-height: 0.98;
+      letter-spacing: -0.03em;
+    }
+
+    [class~="04-human-in-loop-selection-svg"] {
+      position: absolute;
+      inset: 0;
+      width: 438px;
+      height: 190px;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    [class~="04-human-in-loop-selection-svg"] rect {
+      fill: none;
+      stroke: #7657ff;
+      stroke-width: 3;
+    }
+
+    [class~="04-human-in-loop-handle"] {
+      position: absolute;
+      width: 12px;
+      height: 12px;
+      margin-left: -6px;
+      margin-top: -6px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      background: #7657ff;
+      pointer-events: none;
+    }
+
+    [class~="04-human-in-loop-handle-tl"] { left: 4px; top: 4px; }
+    [class~="04-human-in-loop-handle-tr"] { left: 434px; top: 4px; }
+    [class~="04-human-in-loop-handle-bl"] { left: 4px; top: 186px; }
+    [class~="04-human-in-loop-handle-br"] { left: 434px; top: 186px; }
+
+    [class~="04-human-in-loop-artboard-rule"] {
+      position: absolute;
+      left: 58px;
+      right: 58px;
+      top: 424px;
+      height: 2px;
+      border-radius: 2px;
+      background: rgba(247, 242, 232, 0.42);
+    }
+
+    [class~="04-human-in-loop-artboard-caption"] {
+      position: absolute;
+      left: 58px;
+      top: 464px;
+      color: #f7f2e8;
+      font-size: 20px;
+      font-weight: 500;
+      line-height: 1.4;
+    }
+
+    [class~="04-human-in-loop-inspector"] {
+      position: absolute;
+      right: 24px;
+      top: 24px;
+      width: 474px;
+      height: 730px;
+      transform-origin: 100% 100%;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 14px;
+      background: rgba(255, 255, 255, 0.97);
+      overflow: hidden;
+    }
+
+    [class~="04-human-in-loop-inspector-head"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 64px;
+      padding: 0 26px;
+      border-bottom: 1.5px solid rgba(118, 87, 255, 0.15);
+    }
+
+    [class~="04-human-in-loop-inspector-title"] {
+      color: #0a0a0a;
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    [class~="04-human-in-loop-bound-pill"] {
+      padding: 7px 12px;
+      border-radius: 100px;
+      background: rgba(118, 87, 255, 0.08);
+      color: #7053f2;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    [class~="04-human-in-loop-section"] {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+    }
+
+    [class~="04-human-in-loop-type-section"] { top: 84px; }
+    [class~="04-human-in-loop-color-section"] { top: 300px; }
+    [class~="04-human-in-loop-layers-section"] { top: 418px; }
+    [class~="04-human-in-loop-format-section"] { top: 626px; }
+
+    [class~="04-human-in-loop-section-label"] {
+      margin-bottom: 12px;
+      color: #7053f2;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    [class~="04-human-in-loop-control-card"] {
+      padding: 15px 16px;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(118, 87, 255, 0.04);
+    }
+
+    [class~="04-human-in-loop-field-line"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #4d35b5;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    [class~="04-human-in-loop-weight-readout"] {
+      min-width: 44px;
+      color: #0a0a0a;
+      font-variant-numeric: tabular-nums;
+      text-align: right;
+      font-weight: 700;
+    }
+
+    [class~="04-human-in-loop-slider"] {
+      position: relative;
+      height: 28px;
+      margin-top: 10px;
+    }
+
+    [class~="04-human-in-loop-slider-track"] {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 12px;
+      height: 6px;
+      border-radius: 6px;
+      background: rgba(118, 87, 255, 0.08);
+    }
+
+    [class~="04-human-in-loop-slider-fill"] {
+      position: absolute;
+      left: 0;
+      top: 12px;
+      width: 278px;
+      height: 6px;
+      border-radius: 6px;
+      background: #7657ff;
+      transform-origin: 0% 50%;
+    }
+
+    [class~="04-human-in-loop-slider-knob"] {
+      position: absolute;
+      left: 268px;
+      top: 3px;
+      width: 24px;
+      height: 24px;
+      border: 3px solid #ffffff;
+      border-radius: 50%;
+      background: #7657ff;
+      outline: 1.5px solid rgba(118, 87, 255, 0.2);
+    }
+
+    [class~="04-human-in-loop-color-row"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 13px 15px;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 12px;
+      background: rgba(118, 87, 255, 0.04);
+      color: #4d35b5;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    [class~="04-human-in-loop-color-control"] {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    [class~="04-human-in-loop-swatch"] {
+      width: 27px;
+      height: 27px;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      background: #f7f2e8;
+      outline: 1.5px solid rgba(118, 87, 255, 0.2);
+    }
+
+    [class~="04-human-in-loop-hex"] {
+      min-width: 76px;
+      color: #0a0a0a;
+      font-size: 14px;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    [class~="04-human-in-loop-layer-list"] {
+      position: relative;
+      height: 156px;
+    }
+
+    [class~="04-human-in-loop-layer-row"],
+    [class~="04-human-in-loop-layer-ghost"],
+    [class~="04-human-in-loop-layer-placed"] {
+      position: absolute;
+      left: 0;
+      width: 394px;
+      height: 46px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0 14px;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 10px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #0a0a0a;
+      font-size: 15px;
+      font-weight: 500;
+      box-sizing: border-box;
+    }
+
+    [class~="04-human-in-loop-layer-source"] { top: 0; }
+    [class~="04-human-in-loop-layer-neighbor"] { top: 54px; }
+    [class~="04-human-in-loop-layer-third"] { top: 108px; }
+    [class~="04-human-in-loop-layer-placed"] { top: 54px; opacity: 0; }
+    [class~="04-human-in-loop-layer-ghost"] {
+      z-index: 6;
+      top: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    [class~="04-human-in-loop-grip"] {
+      color: #9a9a9a;
+      font-size: 17px;
+      letter-spacing: -0.2em;
+    }
+
+    [class~="04-human-in-loop-layer-icon"] {
+      width: 25px;
+      height: 25px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      background: rgba(118, 87, 255, 0.08);
+      color: #7053f2;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    [class~="04-human-in-loop-format-row"] {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    [class~="04-human-in-loop-format-pill"] {
+      padding: 8px 13px;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 100px;
+      background: rgba(118, 87, 255, 0.08);
+      color: #7053f2;
+      font-size: 12px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    [class~="04-human-in-loop-mobile-sheet"] {
+      position: absolute;
+      left: 648px;
+      top: 696px;
+      width: 496px;
+      height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      box-sizing: border-box;
+      border: 1.5px solid rgba(118, 87, 255, 0.2);
+      border-radius: 100px;
+      background: rgba(255, 255, 255, 0.98);
+      color: #0a0a0a;
+      font-size: 16px;
+      font-weight: 600;
+      opacity: 0;
+    }
+
+    [class~="04-human-in-loop-mobile-state"] {
+      padding: 7px 12px;
+      border-radius: 100px;
+      background: rgba(118, 87, 255, 0.08);
+      color: #7053f2;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    [class~="04-human-in-loop-cursor"] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      z-index: 20;
+      width: 42px;
+      height: 54px;
+      pointer-events: none;
+      transform-origin: 8px 7px;
+      filter: drop-shadow(0 2px 0 rgba(255, 255, 255, 0.8));
+    }
+
+    [class~="04-human-in-loop-cursor"] path {
+      fill: #0a0a0a;
+      stroke: #ffffff;
+      stroke-width: 3;
+      stroke-linejoin: round;
+    }
+  </style>
+
+  <div data-hf-id="hf-hbmn" id="root" data-composition-id="04-human-in-loop" data-width="1920" data-height="1080" data-duration="15.5">
+    <div data-hf-id="hf-tt0c" class="clip 04-human-in-loop-bg" data-start="0" data-duration="15.5" data-track-index="0"></div>
+    <div data-hf-id="hf-p6si" class="clip 04-human-in-loop-shot" data-start="0" data-duration="15.5" data-track-index="1">
+      <div data-hf-id="hf-ijdh" class="04-human-in-loop-eyebrow">
+        <span data-hf-id="hf-w68f" class="04-human-in-loop-eyebrow-line"></span>
+        <span data-hf-id="hf-80a9">Direct manipulation</span>
+      </div>
+
+      <div data-hf-id="hf-22my" class="04-human-in-loop-stage" id="04-human-in-loop-stage">
+        <img data-hf-id="hf-8ute" class="04-human-in-loop-editor-capture" src="assets/visually-editor.png" alt="" data-layout-allow-overflow="">
+        <div data-hf-id="hf-alfj" class="04-human-in-loop-capture-veil"></div>
+        <div data-hf-id="hf-eljc" class="04-human-in-loop-workspace-label">Live canvas</div>
+
+        <div data-hf-id="hf-jpds" class="04-human-in-loop-artboard" id="04-human-in-loop-artboard">
+          <div data-hf-id="hf-yt87" class="04-human-in-loop-artboard-kicker">TRAVEL JOURNAL · 2026</div>
+          <div data-hf-id="hf-pwan" class="04-human-in-loop-artboard-dot"></div>
+          <div data-hf-id="hf-7m6h" class="04-human-in-loop-headline-wrap">
+            <div data-hf-id="hf-8sv1" class="04-human-in-loop-headline" id="04-human-in-loop-headline">CHASE<br data-hf-id="hf-x5px">THE SUN</div>
+            <svg data-hf-id="hf-2us8" class="04-human-in-loop-selection-svg" viewBox="0 0 438 190" xmlns="http://www.w3.org/2000/svg">
+              <rect data-hf-id="hf-e7r8" id="04-human-in-loop-selection-path" x="4" y="4" width="430" height="182" rx="5" />
+            </svg>
+            <span data-hf-id="hf-j9js" class="04-human-in-loop-handle 04-human-in-loop-handle-tl"></span>
+            <span data-hf-id="hf-12j2" class="04-human-in-loop-handle 04-human-in-loop-handle-tr"></span>
+            <span data-hf-id="hf-hv4i" class="04-human-in-loop-handle 04-human-in-loop-handle-bl"></span>
+            <span data-hf-id="hf-o0yc" class="04-human-in-loop-handle 04-human-in-loop-handle-br"></span>
+          </div>
+          <div data-hf-id="hf-ppy0" class="04-human-in-loop-artboard-rule"></div>
+          <div data-hf-id="hf-hhs6" class="04-human-in-loop-artboard-caption">Slow mornings, warm skies,<br data-hf-id="hf-rsrt">and nowhere else to be.</div>
+        </div>
+
+        <aside data-hf-id="hf-aeml" class="04-human-in-loop-inspector" id="04-human-in-loop-inspector">
+          <div data-hf-id="hf-53h2" class="04-human-in-loop-inspector-head">
+            <span data-hf-id="hf-xn5m" class="04-human-in-loop-inspector-title">Type inspector</span>
+            <span data-hf-id="hf-2drm" class="04-human-in-loop-bound-pill">Selected</span>
+          </div>
+
+          <section data-hf-id="hf-00d3" class="04-human-in-loop-section 04-human-in-loop-type-section">
+            <div data-hf-id="hf-ub71" class="04-human-in-loop-section-label">Typography</div>
+            <div data-hf-id="hf-pd9a" class="04-human-in-loop-control-card">
+              <div data-hf-id="hf-gkin" class="04-human-in-loop-field-line">
+                <span data-hf-id="hf-ahxx">Weight</span>
+                <span data-hf-id="hf-kpfc" class="04-human-in-loop-weight-readout" id="04-human-in-loop-weight-readout">500</span>
+              </div>
+              <div data-hf-id="hf-vsjf" class="04-human-in-loop-slider">
+                <div data-hf-id="hf-5qe1" class="04-human-in-loop-slider-track"></div>
+                <div data-hf-id="hf-vb1i" class="04-human-in-loop-slider-fill" id="04-human-in-loop-slider-fill"></div>
+                <div data-hf-id="hf-edry" class="04-human-in-loop-slider-knob" id="04-human-in-loop-slider-knob"></div>
+              </div>
+            </div>
+          </section>
+
+          <section data-hf-id="hf-sce4" class="04-human-in-loop-section 04-human-in-loop-color-section">
+            <div data-hf-id="hf-uy5b" class="04-human-in-loop-section-label">Color</div>
+            <div data-hf-id="hf-79wa" class="04-human-in-loop-color-row">
+              <span data-hf-id="hf-1x7g">Fill</span>
+              <span data-hf-id="hf-t95w" class="04-human-in-loop-color-control">
+                <span data-hf-id="hf-de6z" class="04-human-in-loop-swatch" id="04-human-in-loop-swatch"></span>
+                <span data-hf-id="hf-7e7a" class="04-human-in-loop-hex" id="04-human-in-loop-hex">#F7F2E8</span>
+              </span>
+            </div>
+          </section>
+
+          <section data-hf-id="hf-wvo5" class="04-human-in-loop-section 04-human-in-loop-layers-section">
+            <div data-hf-id="hf-88yy" class="04-human-in-loop-section-label">Layers</div>
+            <div data-hf-id="hf-x3hw" class="04-human-in-loop-layer-list">
+              <div data-hf-id="hf-k4co" class="04-human-in-loop-layer-row 04-human-in-loop-layer-source" id="04-human-in-loop-layer-source">
+                <span data-hf-id="hf-1qvf" class="04-human-in-loop-grip">⋮⋮</span><span data-hf-id="hf-b8fw" class="04-human-in-loop-layer-icon">T</span><span data-hf-id="hf-7slp">Headline</span>
+              </div>
+              <div data-hf-id="hf-q1ru" class="04-human-in-loop-layer-row 04-human-in-loop-layer-neighbor" id="04-human-in-loop-layer-neighbor">
+                <span data-hf-id="hf-xz1n" class="04-human-in-loop-grip">⋮⋮</span><span data-hf-id="hf-gc8k" class="04-human-in-loop-layer-icon">T</span><span data-hf-id="hf-s31t">Body</span>
+              </div>
+              <div data-hf-id="hf-clpb" class="04-human-in-loop-layer-row 04-human-in-loop-layer-third">
+                <span data-hf-id="hf-xkqm" class="04-human-in-loop-grip">⋮⋮</span><span data-hf-id="hf-4465" class="04-human-in-loop-layer-icon">●</span><span data-hf-id="hf-ig7v">Accent</span>
+              </div>
+              <div data-hf-id="hf-qqcu" class="04-human-in-loop-layer-ghost" id="04-human-in-loop-layer-ghost">
+                <span data-hf-id="hf-x6fl" class="04-human-in-loop-grip">⋮⋮</span><span data-hf-id="hf-f5bh" class="04-human-in-loop-layer-icon">T</span><span data-hf-id="hf-sjwh">Headline</span>
+              </div>
+              <div data-hf-id="hf-ry68" class="04-human-in-loop-layer-placed" id="04-human-in-loop-layer-placed">
+                <span data-hf-id="hf-ws4k" class="04-human-in-loop-grip">⋮⋮</span><span data-hf-id="hf-fjmi" class="04-human-in-loop-layer-icon">T</span><span data-hf-id="hf-tqtk">Headline</span>
+              </div>
+            </div>
+          </section>
+
+          <section data-hf-id="hf-5tr6" class="04-human-in-loop-section 04-human-in-loop-format-section">
+            <div data-hf-id="hf-8ltq" class="04-human-in-loop-format-row">
+              <span data-hf-id="hf-km68" class="04-human-in-loop-format-pill" id="04-human-in-loop-format-portrait">Portrait</span>
+              <span data-hf-id="hf-05va" class="04-human-in-loop-format-pill" id="04-human-in-loop-format-landscape">Landscape</span>
+              <span data-hf-id="hf-j25k" class="04-human-in-loop-format-pill" id="04-human-in-loop-format-square">Square</span>
+            </div>
+          </section>
+        </aside>
+
+        <div data-hf-id="hf-3wa6" class="04-human-in-loop-mobile-sheet" id="04-human-in-loop-mobile-sheet">
+          <span data-hf-id="hf-ce46">Canvas tools</span><span data-hf-id="hf-vujj" class="04-human-in-loop-mobile-state">Mobile</span>
+        </div>
+
+        <svg data-hf-id="hf-u29g" class="04-human-in-loop-cursor" id="04-human-in-loop-cursor" viewBox="0 0 42 54" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path data-hf-id="hf-15mx" d="M6 4 L35 31 L22 32 L28 47 L20 51 L14 35 L5 44 Z" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const byId = (id) => document.getElementById(id);
+      const stage = byId("04-human-in-loop-stage");
+      const artboard = byId("04-human-in-loop-artboard");
+      const headline = byId("04-human-in-loop-headline");
+      const inspector = byId("04-human-in-loop-inspector");
+      const weightReadout = byId("04-human-in-loop-weight-readout");
+      const sliderFill = byId("04-human-in-loop-slider-fill");
+      const sliderKnob = byId("04-human-in-loop-slider-knob");
+      const swatch = byId("04-human-in-loop-swatch");
+      const hex = byId("04-human-in-loop-hex");
+      const layerSource = byId("04-human-in-loop-layer-source");
+      const layerNeighbor = byId("04-human-in-loop-layer-neighbor");
+      const layerGhost = byId("04-human-in-loop-layer-ghost");
+      const layerPlaced = byId("04-human-in-loop-layer-placed");
+      const cursor = byId("04-human-in-loop-cursor");
+      const portrait = byId("04-human-in-loop-format-portrait");
+      const landscape = byId("04-human-in-loop-format-landscape");
+      const square = byId("04-human-in-loop-format-square");
+      const mobileSheet = byId("04-human-in-loop-mobile-sheet");
+      const selectionPath = byId("04-human-in-loop-selection-path");
+      const handles = Array.from(stage.querySelectorAll('[class~="04-human-in-loop-handle"]'));
+
+      const selectionLength = selectionPath.getTotalLength();
+      selectionPath.style.strokeDasharray = `${selectionLength}`;
+      selectionPath.style.strokeDashoffset = `${selectionLength}`;
+
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines = window.__timelines || {};
+      window.__timelines["04-human-in-loop"] = tl;
+
+      tl.set([portrait, landscape, square, mobileSheet, cursor], { opacity: 0 }, 0);
+      tl.set(inspector, { opacity: 0, x: 54 }, 0);
+      tl.set(handles, { opacity: 0 }, 0);
+
+      tl.fromTo(stage, { opacity: 0, y: 22 }, { opacity: 1, y: 0, duration: 0.42, ease: "power2.out", immediateRender: false }, 0);
+      tl.fromTo(artboard, { opacity: 0.75, scale: 0.97 }, { opacity: 1, scale: 1, duration: 0.5, ease: "power2.out", immediateRender: false }, 0.05);
+      tl.fromTo(inspector, { opacity: 0, x: 54 }, { opacity: 1, x: 0, duration: 0.62, ease: "power2.out", immediateRender: false }, 0.18);
+      tl.to(selectionPath, { strokeDashoffset: 0, duration: 0.7, ease: "power2.out" }, 0.42);
+      tl.fromTo(handles, { opacity: 0, scale: 0.6 }, { opacity: 1, scale: 1, duration: 0.22, ease: "power3.out", stagger: 0.035, immediateRender: false }, 0.93);
+      tl.fromTo(cursor, { opacity: 0, x: 1830, y: 60 }, { opacity: 1, x: 1592, y: 194, duration: 0.78, ease: "power2.inOut", immediateRender: false }, 1.55);
+      tl.to(cursor, { x: 1602, y: 207, duration: 0.42, ease: "power2.inOut" }, 2.42);
+
+      tl.addLabel("04-human-in-loop-weight-edit", 3.16);
+      const weightState = { value: 500 };
+      tl.to(weightState, {
+        value: 700,
+        duration: 1.45,
+        ease: "power1.inOut",
+        onUpdate: () => { weightReadout.textContent = `${Math.round(weightState.value)}`; }
+      }, "04-human-in-loop-weight-edit");
+      tl.to(headline, { fontWeight: 700, duration: 1.45, ease: "power1.inOut" }, "04-human-in-loop-weight-edit");
+      tl.to(sliderFill, { scaleX: 1.37, duration: 1.45, ease: "power1.inOut" }, "04-human-in-loop-weight-edit");
+      tl.to(sliderKnob, { x: 103, duration: 1.45, ease: "power1.inOut" }, "04-human-in-loop-weight-edit");
+      tl.to(cursor, { x: 1705, duration: 1.45, ease: "power1.inOut" }, "04-human-in-loop-weight-edit");
+      tl.fromTo([weightReadout, headline], { color: (i) => i === 0 ? "#0A0A0A" : "#F7F2E8" }, { color: (i) => i === 0 ? "#7053F2" : "#F7F2E8", duration: 0.2, ease: "power1.out", immediateRender: false }, 4.66);
+
+      tl.to(cursor, { x: 1637, y: 349, duration: 0.62, ease: "power2.inOut" }, 5.45);
+      tl.addLabel("04-human-in-loop-color-edit", 6.34);
+      const colorSteps = [
+        { t: 0, value: "#F7F2E8" },
+        { t: 0.22, value: "#7657FF" }
+      ];
+      const colorDriver = { t: 0 };
+      let lastColorStep = null;
+      tl.to(colorDriver, {
+        t: 0.45,
+        duration: 0.45,
+        ease: "none",
+        onUpdate: () => {
+          const state = colorDriver.t >= colorSteps[1].t ? colorSteps[1] : colorSteps[0];
+          if (state !== lastColorStep) {
+            swatch.style.backgroundColor = state.value;
+            headline.style.color = state.value;
+            hex.textContent = state.value;
+            lastColorStep = state;
+          }
+        }
+      }, "04-human-in-loop-color-edit");
+      tl.fromTo(swatch, { scale: 0.82 }, { scale: 1, duration: 0.28, ease: "power3.out", immediateRender: false }, 6.56);
+
+      tl.to(cursor, { x: 1352, y: 493, duration: 0.55, ease: "power2.inOut" }, 6.9);
+      tl.to([cursor, layerSource], { scale: 0.92, duration: 0.09, ease: "power1.in" }, 7.48);
+      tl.to([cursor, layerSource], { scale: 1, duration: 0.09, ease: "power1.out" }, 7.57);
+      tl.set(layerSource, { opacity: 0 }, 7.57);
+      tl.set(layerGhost, { opacity: 0.68 }, 7.57);
+      tl.fromTo(layerGhost, { scale: 1, y: 0, rotation: 0 }, { scale: 1.05, y: -8, rotation: -2, duration: 0.16, ease: "power2.out", immediateRender: false }, 7.57);
+      tl.fromTo(layerGhost, { x: 0, y: -8 }, { x: 0, y: 54, duration: 0.72, ease: "power2.inOut", immediateRender: false }, 7.76);
+      tl.fromTo(cursor, { x: 1352, y: 493 }, { x: 1352, y: 555, duration: 0.72, ease: "power2.inOut", immediateRender: false }, 7.76);
+      tl.fromTo(layerNeighbor, { y: 0 }, { y: -54, duration: 0.28, ease: "power3.out", immediateRender: false }, 8.12);
+      tl.set(layerGhost, { opacity: 0 }, 8.48);
+      tl.fromTo(layerPlaced, { opacity: 0, scale: 0.92 }, { opacity: 1, scale: 1, duration: 0.26, ease: "power3.out", immediateRender: false }, 8.48);
+      tl.to(cursor, { scale: 1, duration: 0.18, ease: "power2.out" }, 8.48);
+
+      tl.fromTo(portrait, { opacity: 0, y: 14, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "power3.out", immediateRender: false }, 9.25);
+      tl.to(artboard, { scaleX: 0.72, scaleY: 0.94, x: 0, y: 0, duration: 0.58, ease: "power2.inOut" }, 9.25);
+      tl.fromTo(landscape, { opacity: 0, y: 14, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "power3.out", immediateRender: false }, 10.0);
+      tl.to(artboard, { scaleX: 1, scaleY: 0.62, x: 0, y: 35, duration: 0.58, ease: "power2.inOut" }, 10.0);
+      tl.fromTo(square, { opacity: 0, y: 14, scale: 0.9 }, { opacity: 1, y: 0, scale: 1, duration: 0.32, ease: "power3.out", immediateRender: false }, 10.75);
+      tl.to(artboard, { scaleX: 0.82, scaleY: 0.82, x: 0, y: 18, duration: 0.58, ease: "power2.inOut" }, 10.75);
+      tl.to(cursor, { x: 1492, y: 676, duration: 0.72, ease: "power2.inOut" }, 11.25);
+
+      tl.addLabel("04-human-in-loop-mobile-resolve", 12.2);
+      tl.to(artboard, { scaleX: 0.5, scaleY: 0.94, x: 0, y: 0, duration: 0.72, ease: "power2.inOut" }, "04-human-in-loop-mobile-resolve");
+      tl.to(inspector, { scaleX: 0.72, scaleY: 0.1, x: -390, duration: 0.62, ease: "power2.inOut" }, "04-human-in-loop-mobile-resolve");
+      tl.to(cursor, { x: 1086, y: 728, duration: 0.62, ease: "power2.inOut" }, "04-human-in-loop-mobile-resolve");
+      tl.set(inspector, { opacity: 0 }, 12.82);
+      tl.fromTo(mobileSheet, { opacity: 0, y: 12, scale: 0.96 }, { opacity: 1, y: 0, scale: 1, duration: 0.34, ease: "power3.out", immediateRender: false }, 12.82);
+      tl.fromTo(artboard, { rotation: -0.35 }, { rotation: 0, duration: 0.34, ease: "power2.out", immediateRender: false }, 12.86);
+      const finalHold = { value: 0 };
+      tl.to(finalHold, { value: 1, duration: 1.8, ease: "none" }, 13.2);
+    })();
+  </script>
+</template>

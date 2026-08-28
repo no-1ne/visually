@@ -1,0 +1,559 @@
+<template>
+  <style>
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAopxhTg.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAkJxhTg.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 600;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwAfJthTg.ttf") format("truetype");
+    }
+
+    @font-face {
+      font-family: "DM Sans";
+      font-style: normal;
+      font-weight: 700;
+      font-display: swap;
+      src: url("capture/assets/fonts/rP2tp2ywxg089UriI5-g4vlH9VoD8CmcqZG40F9JadbnoEwARZthTg.ttf") format("truetype");
+    }
+
+    #root {
+      position: relative;
+      width: 1920px;
+      height: 1080px;
+      overflow: hidden;
+      container-type: size;
+      color: #0a0a0a;
+      font-family: "DM Sans";
+    }
+
+    #root * {
+      box-sizing: border-box;
+    }
+
+    #root [class~="05-browser-production-bg"] {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    #root [class~="05-browser-production-bg-image"] {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      opacity: 0.34;
+      filter: saturate(0.78);
+    }
+
+    #root [class~="05-browser-production-bg-wash"] {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.42) 0%, rgba(255,255,255,0.70) 52%, rgba(255,255,255,0.90) 100%),
+        linear-gradient(180deg, rgba(255,255,255,0.20) 0%, #ffffff 84%);
+    }
+
+    #root [class~="05-browser-production-stage"] {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+    }
+
+    #root [class~="05-browser-production-eyebrow"] {
+      position: absolute;
+      top: 68px;
+      left: 96px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      color: #7657ff;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    #root [class~="05-browser-production-eyebrow-line"] {
+      display: block;
+      width: 60px;
+      height: 4px;
+      border-radius: 2px;
+      background: #7657ff;
+    }
+
+    #root [class~="05-browser-production-canvas-shell"] {
+      position: absolute;
+      top: 158px;
+      left: 96px;
+      width: 944px;
+      height: 654px;
+      overflow: hidden;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 14px;
+      background: rgba(118, 87, 255, 0.04);
+    }
+
+    #root [class~="05-browser-production-canvas-shell"]::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border: 10px solid rgba(255,255,255,0.58);
+      border-radius: 13px;
+      pointer-events: none;
+    }
+
+    #root [class~="05-browser-production-canvas-image"] {
+      position: absolute;
+      top: -92px;
+      left: -510px;
+      width: 1420px;
+      height: auto;
+      max-width: none;
+    }
+
+    #root [class~="05-browser-production-local-pill"] {
+      position: absolute;
+      left: 130px;
+      bottom: 28px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 42px;
+      padding: 0 18px;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 100px;
+      background: rgba(255,255,255,0.94);
+      color: #4d35b5;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+
+    #root [class~="05-browser-production-local-dot"] {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #7657ff;
+    }
+
+    #root [class~="05-browser-production-flow"] {
+      position: absolute;
+      inset: 0;
+      width: 1920px;
+      height: 1080px;
+      overflow: visible;
+      pointer-events: none;
+    }
+
+    #root [class~="05-browser-production-flow-path"] {
+      fill: none;
+      stroke: rgba(118, 87, 255, 0.52);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #root [class~="05-browser-production-flow-node"] {
+      fill: #7657ff;
+    }
+
+    #root [class~="05-browser-production-grid"] {
+      position: absolute;
+      top: 202px;
+      left: 1092px;
+      width: 724px;
+      height: 480px;
+    }
+
+    #root [class~="05-browser-production-card"] {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 330px;
+      height: 178px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 24px 25px 22px;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 14px;
+      background: rgba(250, 248, 255, 0.96);
+      will-change: transform, opacity;
+    }
+
+    #root [class~="05-browser-production-card-kicker"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: #4d35b5;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    #root [class~="05-browser-production-card-index"] {
+      color: #737373;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+
+    #root [class~="05-browser-production-card-title"] {
+      max-width: 280px;
+      color: #0a0a0a;
+      font-size: 28px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
+    }
+
+    #root [class~="05-browser-production-card-icon"] {
+      width: 34px;
+      height: 34px;
+      color: #7657ff;
+    }
+
+    #root [class~="05-browser-production-upload"] {
+      position: absolute;
+      top: 716px;
+      left: 1116px;
+      width: 676px;
+      padding: 20px 24px 22px;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 12px;
+      background: rgba(250, 248, 255, 0.96);
+    }
+
+    #root [class~="05-browser-production-upload-head"] {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 14px;
+    }
+
+    #root [class~="05-browser-production-upload-label"] {
+      color: #0a0a0a;
+      font-size: 27px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    #root [class~="05-browser-production-upload-state"] {
+      color: #4d35b5;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #root [class~="05-browser-production-upload-track"] {
+      width: 100%;
+      height: 18px;
+      overflow: hidden;
+      border-radius: 6px;
+      background: rgba(118, 87, 255, 0.08);
+    }
+
+    #root [class~="05-browser-production-upload-fill"] {
+      width: 100%;
+      height: 100%;
+      border-radius: 6px;
+      background: #7657ff;
+      transform-origin: left center;
+      will-change: transform;
+    }
+
+    #root [class~="05-browser-production-payoff"] {
+      position: absolute;
+      top: 292px;
+      left: 505px;
+      width: 910px;
+      min-height: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 30px;
+      padding: 54px 66px;
+      border: 1.5px solid rgba(118, 87, 255, 0.20);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.96);
+      text-align: center;
+      will-change: transform, opacity, filter;
+    }
+
+    #root [class~="05-browser-production-payoff-check"] {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #7657ff;
+      color: #ffffff;
+    }
+
+    #root [class~="05-browser-production-payoff-path"] {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 3.2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    #root [class~="05-browser-production-payoff-copy"] {
+      color: #0a0a0a;
+      font-size: 58px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.08;
+    }
+  </style>
+
+  <div data-hf-id="hf-u71s" id="root" data-composition-id="05-browser-production" data-width="1920" data-height="1080" data-duration="14.4">
+    <div data-hf-id="hf-s9yh" class="clip 05-browser-production-bg" data-start="0" data-duration="14.4" data-track-index="0">
+      <img data-hf-id="hf-cavd" class="05-browser-production-bg-image" src="assets/visually-editor.png" alt="">
+      <div data-hf-id="hf-zhjy" class="05-browser-production-bg-wash"></div>
+    </div>
+
+    <div data-hf-id="hf-p25n" class="clip 05-browser-production-stage" data-start="0" data-duration="14.4" data-track-index="1">
+      <div data-hf-id="hf-06yk" class="05-browser-production-eyebrow">
+        <span data-hf-id="hf-yzea" class="05-browser-production-eyebrow-line"></span>
+        <span data-hf-id="hf-eiln">THE BROWSER IS THE STACK</span>
+      </div>
+
+      <div data-hf-id="hf-qy4i" class="05-browser-production-canvas-shell">
+        <img data-hf-id="hf-wwce" class="05-browser-production-canvas-image" src="assets/visually-editor.png" alt="Visually editor canvas">
+        <div data-hf-id="hf-i0lo" class="05-browser-production-local-pill">
+          <span data-hf-id="hf-v261" class="05-browser-production-local-dot"></span>
+          <span data-hf-id="hf-n8ms">Saved locally</span>
+        </div>
+      </div>
+
+      <svg data-hf-id="hf-3u8v" class="05-browser-production-flow" viewBox="0 0 1920 1080" aria-hidden="true">
+        <path data-hf-id="hf-krw3" class="05-browser-production-flow-path" pathLength="100" d="M 1008 355 C 1060 355, 1066 336, 1127 336" />
+        <path data-hf-id="hf-2anp" class="05-browser-production-flow-path" pathLength="100" d="M 1008 414 C 1090 414, 1170 336, 1469 336" />
+        <path data-hf-id="hf-igu0" class="05-browser-production-flow-path" pathLength="100" d="M 1008 514 C 1062 514, 1067 548, 1127 548" />
+        <path data-hf-id="hf-ags4" class="05-browser-production-flow-path" pathLength="100" d="M 1008 574 C 1090 574, 1180 548, 1469 548" />
+        <circle data-hf-id="hf-ztwh" class="05-browser-production-flow-node" cx="1008" cy="355" r="4" />
+        <circle data-hf-id="hf-yvif" class="05-browser-production-flow-node" cx="1008" cy="414" r="4" />
+        <circle data-hf-id="hf-wjsm" class="05-browser-production-flow-node" cx="1008" cy="514" r="4" />
+        <circle data-hf-id="hf-dr2s" class="05-browser-production-flow-node" cx="1008" cy="574" r="4" />
+      </svg>
+
+      <div data-hf-id="hf-p4iz" class="05-browser-production-grid">
+        <article data-hf-id="hf-z8qg" class="05-browser-production-card" data-target-x="-176" data-target-y="-106">
+          <div data-hf-id="hf-2c1x" class="05-browser-production-card-kicker">
+            <svg data-hf-id="hf-ygwg" class="05-browser-production-card-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <rect data-hf-id="hf-3xqz" x="5" y="6" width="22" height="20" rx="4" fill="none" stroke="currentColor" stroke-width="2" />
+              <path data-hf-id="hf-3qc1" d="M10 20l4-4 3 3 5-6 4 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span data-hf-id="hf-14ec" class="05-browser-production-card-index">01</span>
+          </div>
+          <div data-hf-id="hf-eswb" class="05-browser-production-card-title">PNG · JPEG · SVG</div>
+        </article>
+
+        <article data-hf-id="hf-6dbt" class="05-browser-production-card" data-target-x="176" data-target-y="-106">
+          <div data-hf-id="hf-dxi1" class="05-browser-production-card-kicker">
+            <svg data-hf-id="hf-z948" class="05-browser-production-card-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <path data-hf-id="hf-fni6" d="M6 9h20M10 6l-4 3 4 3M22 6l4 3-4 3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              <rect data-hf-id="hf-52qx" x="7" y="16" width="18" height="10" rx="3" fill="none" stroke="currentColor" stroke-width="2" />
+            </svg>
+            <span data-hf-id="hf-zxh9" class="05-browser-production-card-index">02</span>
+          </div>
+          <div data-hf-id="hf-q8gd" class="05-browser-production-card-title">Client-side rendering</div>
+        </article>
+
+        <article data-hf-id="hf-kphz" class="05-browser-production-card" data-target-x="-176" data-target-y="106">
+          <div data-hf-id="hf-f4f4" class="05-browser-production-card-kicker">
+            <svg data-hf-id="hf-y275" class="05-browser-production-card-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <rect data-hf-id="hf-xb9u" x="4" y="7" width="20" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2" />
+              <path data-hf-id="hf-5d25" d="M13 12l7 4-7 4z" fill="currentColor" />
+              <path data-hf-id="hf-dsee" d="M24 13l4-3v12l-4-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+            </svg>
+            <span data-hf-id="hf-0bsa" class="05-browser-production-card-index">03</span>
+          </div>
+          <div data-hf-id="hf-msx1" class="05-browser-production-card-title">Video via FFmpeg/WASM</div>
+        </article>
+
+        <article data-hf-id="hf-0nds" class="05-browser-production-card" data-target-x="176" data-target-y="106">
+          <div data-hf-id="hf-eq43" class="05-browser-production-card-kicker">
+            <svg data-hf-id="hf-ygi6" class="05-browser-production-card-icon" viewBox="0 0 32 32" aria-hidden="true">
+              <path data-hf-id="hf-zmbb" d="M7 5h12l6 6v16H7z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              <path data-hf-id="hf-nbva" d="M19 5v7h6M11 18h10M11 22h8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span data-hf-id="hf-2bbf" class="05-browser-production-card-index">04</span>
+          </div>
+          <div data-hf-id="hf-rk7w" class="05-browser-production-card-title">Portable project JSON</div>
+        </article>
+      </div>
+
+      <div data-hf-id="hf-l7hg" class="05-browser-production-upload">
+        <div data-hf-id="hf-yqb7" class="05-browser-production-upload-head">
+          <span data-hf-id="hf-ff2c" class="05-browser-production-upload-label">Clear progress</span>
+          <span data-hf-id="hf-dm15" class="05-browser-production-upload-state">Large upload</span>
+        </div>
+        <div data-hf-id="hf-iqce" class="05-browser-production-upload-track">
+          <div data-hf-id="hf-xeh2" class="05-browser-production-upload-fill"></div>
+        </div>
+      </div>
+
+      <div data-hf-id="hf-724y" class="05-browser-production-payoff">
+        <svg data-hf-id="hf-2wrs" class="05-browser-production-payoff-check" viewBox="0 0 72 72" aria-hidden="true">
+          <path data-hf-id="hf-7mzy" class="05-browser-production-payoff-path" pathLength="100" d="M20 37l10 10 23-25" />
+        </svg>
+        <div data-hf-id="hf-twbh" class="05-browser-production-payoff-copy">Your work stays portable.</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script>
+    (() => {
+      const root = document.querySelector('[data-composition-id="05-browser-production"]');
+      const q = (selector) => root.querySelector(selector);
+      const qa = (selector) => Array.from(root.querySelectorAll(selector));
+      const cards = qa('[class~="05-browser-production-card"]');
+      const flowPaths = qa('[class~="05-browser-production-flow-path"]');
+      const flowNodes = qa('[class~="05-browser-production-flow-node"]');
+      const eyebrow = q('[class~="05-browser-production-eyebrow"]');
+      const canvasShell = q('[class~="05-browser-production-canvas-shell"]');
+      const localPill = q('[class~="05-browser-production-local-pill"]');
+      const upload = q('[class~="05-browser-production-upload"]');
+      const uploadFill = q('[class~="05-browser-production-upload-fill"]');
+      const payoff = q('[class~="05-browser-production-payoff"]');
+      const payoffCheck = q('[class~="05-browser-production-payoff-check"]');
+      const payoffPath = q('[class~="05-browser-production-payoff-path"]');
+
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      window.__timelines["05-browser-production"] = tl;
+
+      tl.set(payoff, { opacity: 0 }, 0);
+
+      tl.fromTo(
+        canvasShell,
+        { x: -42, opacity: 0.64, scale: 0.985 },
+        { x: 0, opacity: 1, scale: 1, duration: 0.78, ease: "power3.out" },
+        0.04
+      );
+      tl.fromTo(
+        eyebrow,
+        { y: -18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.62, ease: "power3.out" },
+        0.12
+      );
+      tl.fromTo(
+        localPill,
+        { x: -18, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.62, ease: "power3.out" },
+        1.65
+      );
+
+      const cardTimes = [0.48, 3.22, 4.72, 6.18];
+      cards.forEach((card, index) => {
+        const targetX = Number(card.dataset.targetX);
+        const targetY = Number(card.dataset.targetY);
+        tl.fromTo(
+          card,
+          {
+            xPercent: -50,
+            yPercent: -50,
+            x: targetX * 0.68,
+            y: targetY * 0.68,
+            scale: 0.94,
+            opacity: 0
+          },
+          {
+            xPercent: -50,
+            yPercent: -50,
+            x: targetX,
+            y: targetY,
+            scale: 1,
+            opacity: 1,
+            duration: 1.08,
+            ease: "power3.out"
+          },
+          cardTimes[index]
+        );
+      });
+
+      flowPaths.forEach((path, index) => {
+        tl.fromTo(
+          path,
+          { strokeDasharray: 100, strokeDashoffset: 100, opacity: 0.2 },
+          { strokeDashoffset: 0, opacity: 1, duration: 0.82, ease: "power2.out" },
+          6.84 + index * 0.42
+        );
+      });
+      flowNodes.forEach((node, index) => {
+        tl.fromTo(
+          node,
+          { scale: 0.4, opacity: 0, transformOrigin: "50% 50%" },
+          { scale: 1, opacity: 1, duration: 0.36, ease: "back.out(1.7)" },
+          7.42 + index * 0.42
+        );
+      });
+
+      tl.fromTo(
+        upload,
+        { y: 24, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.64, ease: "power3.out" },
+        9.62
+      );
+      tl.fromTo(
+        uploadFill,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 1.16, ease: "power2.out" },
+        10.02
+      );
+
+      tl.to(
+        [canvasShell, eyebrow, localPill, upload, ...cards, ...flowPaths, ...flowNodes],
+        { scale: 0.8, filter: "blur(10px)", duration: 0.2, ease: "power3.in" },
+        11.78
+      );
+      tl.to(
+        [canvasShell, eyebrow, localPill, upload, ...cards, ...flowPaths, ...flowNodes],
+        { opacity: 0.12, duration: 0.2, ease: "none" },
+        11.78
+      );
+      tl.fromTo(
+        payoff,
+        { scale: 1.25, filter: "blur(10px)", opacity: 0.15 },
+        { scale: 1, filter: "blur(0px)", opacity: 1, duration: 0.52, ease: "expo.out", immediateRender: false },
+        11.98
+      );
+      tl.fromTo(
+        payoffCheck,
+        { scale: 0.72, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.44, ease: "back.out(1.7)" },
+        12.38
+      );
+      tl.fromTo(
+        payoffPath,
+        { strokeDasharray: 100, strokeDashoffset: 100 },
+        { strokeDashoffset: 0, duration: 0.54, ease: "power2.out" },
+        12.50
+      );
+    })();
+  </script>
+</template>

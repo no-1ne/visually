@@ -77,3 +77,5 @@ The current suite covers the Zustand state engine, history transactions, documen
 ## WebMCP
 
 On supporting browsers, Visually registers its tool catalog through `document.modelContext`. Unsupported browsers continue normally and expose `data-webmcp="unsupported"` on the root element; supporting hosts progress through `registering` to `ready` (or `error`). The bridge includes read tools for state/templates/export and mutation tools for templates, elements, selection, pages, resize, and history. Element/page deletion and whole-project import require an explicit `confirm: true` argument.
+
+See [HACKATHON.md](./HACKATHON.md) for the full 14-tool map, safety model, source evidence, and WebMCP Challenge testing flow.

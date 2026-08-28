@@ -19,3 +19,9 @@ playwright-report/
 **/playwright-report/
 test-results/
 **/test-results/
+videos/**/.venv-audio/
+videos/**/.waveform-cache/
+videos/**/.thumbnails/
+videos/**/snapshots/
+videos/**/capture/
+videos/**/assets/voice-test.wav
