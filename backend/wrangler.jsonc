@@ -1,0 +1,17 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "visually-r2-presigner",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-08-26",
+  "observability": {
+    "enabled": true,
+    "logs": { "enabled": true, "invocation_logs": true }
+  },
+  "vars": {
+    "R2_ACCOUNT_ID": "7c7bacb0f4d4cc59ffa23721963dd21a",
+    "R2_BUCKET_NAME": "canvasly-assets",
+    "ALLOWED_ORIGINS": "https://visually.deeeplearn.com,https://visually-image-editor.dheeraj-kota1987.workers.dev,https://canvasly-image-editor.dheeraj-kota1987.workers.dev,http://localhost:5173,http://127.0.0.1:5173",
+    "MAX_UPLOAD_BYTES": "52428800",
+    "PRESIGN_TTL_SECONDS": "300"
+  }
+}
